@@ -60,28 +60,28 @@ public class tomatoTaskAdapter extends ArrayAdapter<tomatoTask> {
         Log.d("SetTextView",tomato.getTitle());
         switch (tomato.getTomato()) {
             case 1:
-                viewholder.tomato.setImageResource(R.drawable.ctomato_1);
+                viewholder.tomato.setImageResource(R.drawable.stomato_1);
                 break;
             case 2:
-                viewholder.tomato.setImageResource(R.drawable.ctomato_2);
+                viewholder.tomato.setImageResource(R.drawable.stomato_2);
                 break;
             case 3:
-                viewholder.tomato.setImageResource(R.drawable.ctomato_3);
+                viewholder.tomato.setImageResource(R.drawable.stomato_3);
                 break;
             case 4:
-                viewholder.tomato.setImageResource(R.drawable.ctomato_4);
+                viewholder.tomato.setImageResource(R.drawable.stomato_4);
                 break;
             case 5:
-                viewholder.tomato.setImageResource(R.drawable.ctomato_5);
+                viewholder.tomato.setImageResource(R.drawable.stomato_5);
                 break;
             case 6:
-                viewholder.tomato.setImageResource(R.drawable.ctomato_6);
+                viewholder.tomato.setImageResource(R.drawable.stomato_6);
                 break;
             case 7:
-                viewholder.tomato.setImageResource(R.drawable.ctomato_7);
+                viewholder.tomato.setImageResource(R.drawable.stomato_7);
                 break;
             default:
-                viewholder.tomato.setImageResource(R.drawable.ctomato_1);
+                viewholder.tomato.setImageResource(R.drawable.stomato_1);
                 break;
         }
         return view;
