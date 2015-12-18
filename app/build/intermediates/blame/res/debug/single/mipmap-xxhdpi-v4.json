@@ -1,5 +1,9 @@
 [
     {
+        "merged": "E:\\KC\\Yuri\\workroom\\lifeholder\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi-v4\\ic_launcher.png",
+        "source": "E:\\KC\\Yuri\\workroom\\lifeholder\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+    },
+    {
         "merged": "E:\\KC\\Yuri\\workroom\\Android programing\\LifeHolder\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi-v4\\ic_launcher.png",
         "source": "E:\\KC\\Yuri\\workroom\\Android programing\\LifeHolder\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
     }
