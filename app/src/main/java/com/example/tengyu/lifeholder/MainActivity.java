@@ -2,7 +2,7 @@ package com.example.tengyu.lifeholder;
 
 import java.util.List;
 
-import android.content.pm.ApplicationInfo;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
@@ -15,8 +15,6 @@ import android.util.TypedValue;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.AdapterView;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import com.baoyz.swipemenulistview.SwipeMenu;
@@ -29,8 +27,6 @@ import com.example.tengyu.lifeholder.com.example.tengyu.lifeholder.tomato.tomato
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.melnykov.fab.ScrollDirectionListener;
-import com.melnykov.fab.ObservableScrollView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -39,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
     private GoogleApiClient client;
+    private List<tomatoTask> tomatoList;
+    private SwipeMenuListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,10 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         // setSupportActionBar(toolbar);
-        List<tomatoTask> tomatoList = tomatoIO.testTomatoes();
-        tomatoTaskAdapter adapter = new tomatoTaskAdapter(MainActivity.this,  R.layout.tomatotask_item, tomatoList);
-        SwipeMenuListView listView = (SwipeMenuListView) findViewById(R.id.tomatotask_list_view);
-        listView.setAdapter(adapter);
+        listView = (SwipeMenuListView) findViewById(R.id.tomatotask_list_view);
 
         SwipeMenuCreator creator = new SwipeMenuCreator(){
             @Override
@@ -104,30 +99,22 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        listView.setOnSwipeListener(new SwipeMenuListView.OnSwipeListener() {
-            @Override
-            public void onSwipeStart(int position) {
-                // swipe start
-            }
-
-            @Override
-            public void onSwipeEnd(int position) {
-                // swipe end
-            }
-        });
-
         com.melnykov.fab.FloatingActionButton fab = (com.melnykov.fab.FloatingActionButton) findViewById(R.id.fab);
         fab.attachToListView(listView);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent("com.example.tengyu.lifeholder.ACTION_EDIT");
+                tomatoTask tomatoTp = new tomatoTask();
+                startActivity(intent);
                //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG) .setAction("Action", null).show();
             }
         });
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+       client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -153,6 +140,10 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onStart() {
+        super.onStart();
+        tomatoList = tomatoIO.testTomatoes();
+        tomatoTaskAdapter adapter = new tomatoTaskAdapter(MainActivity.this,  R.layout.tomatotask_item, tomatoList);
+        listView.setAdapter(adapter);
         super.onStart();
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.

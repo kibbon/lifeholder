@@ -31,6 +31,21 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
+
+        <activity
+            android:name="com.example.tengyu.lifeholder.EditActivity"
+            android:label="@string/title_activity_edit"
+            android:parentActivityName="com.example.tengyu.lifeholder.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="MainActivity" />
+
+            <intent-filter>
+                <action android:name="com.example.tengyu.lifeholder.ACTION_EDIT" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

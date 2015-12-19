@@ -1,6 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <integer-array name="blood">
+        <item>@color/blood_darker</item>
+        <item>@color/blood_dark</item>
+        <item>@color/blood_primary</item>
+        <item>@color/blood_light</item>
+    </integer-array>
+    <integer-array name="blossom">
+        <item>@color/blossom_darker</item>
+        <item>@color/blossom_dark</item>
+        <item>@color/blossom_primary</item>
+        <item>@color/blossom_light</item>
+    </integer-array>
+    <integer-array name="candy">
+        <item>@color/candy_darker</item>
+        <item>@color/candy_dark</item>
+        <item>@color/candy_primary</item>
+        <item>@color/candy_light</item>
+    </integer-array>
+    <integer-array name="dark">
+        <item>@color/dark_darker</item>
+        <item>@color/dark_dark</item>
+        <item>@color/dark_primary</item>
+        <item>@color/dark_light</item>
+    </integer-array>
+    <integer-array name="deep">
+        <item>@color/deep_darker</item>
+        <item>@color/deep_dark</item>
+        <item>@color/deep_primary</item>
+        <item>@color/deep_light</item>
+    </integer-array>
+    <integer-array name="grape">
+        <item>@color/grape_darker</item>
+        <item>@color/grape_dark</item>
+        <item>@color/grape_primary</item>
+        <item>@color/grape_light</item>
+    </integer-array>
+    <integer-array name="grass">
+        <item>@color/grass_darker</item>
+        <item>@color/grass_dark</item>
+        <item>@color/grass_primary</item>
+        <item>@color/grass_light</item>
+    </integer-array>
+    <integer-array name="orange">
+        <item>@color/orange_darker</item>
+        <item>@color/orange_dark</item>
+        <item>@color/orange_primary</item>
+        <item>@color/orange_light</item>
+    </integer-array>
+    <integer-array name="sand">
+        <item>@color/sand_darker</item>
+        <item>@color/sand_dark</item>
+        <item>@color/sand_primary</item>
+        <item>@color/sand_light</item>
+    </integer-array>
+    <integer-array name="sea">
+        <item>@color/sea_darker</item>
+        <item>@color/sea_dark</item>
+        <item>@color/sea_primary</item>
+        <item>@color/sea_light</item>
+    </integer-array>
+    <integer-array name="sky">
+        <item>@color/sky_darker</item>
+        <item>@color/sky_dark</item>
+        <item>@color/sky_primary</item>
+        <item>@color/sky_light</item>
+    </integer-array>
+    <integer-array name="snow">
+        <item>@color/snow_darker</item>
+        <item>@color/snow_dark</item>
+        <item>@color/snow_primary</item>
+        <item>@color/snow_light</item>
+    </integer-array>
     <attr format="reference" name="drawerArrowStyle"/>
+    <attr format="dimension" name="fl_borderWidth"/>
+    <attr format="dimension" name="fl_cornerRadius"/>
+    <attr format="dimension" name="fl_dotMargin"/>
+    <attr format="string" name="fl_fontExtension"/>
+    <attr format="string" name="fl_fontFamily"/>
+    <attr format="string" name="fl_fontWeight"/>
+    <attr format="dimension" name="fl_size"/>
+    <attr format="integer" name="fl_textAppearance">
+        <enum name="fl_none" value="0"/>
+        <enum name="fl_dark" value="1"/>
+        <enum name="fl_light" value="2"/>
+    </attr>
+    <attr format="reference" name="fl_theme"/>
+    <attr format="integer" name="fl_touchEffect">
+        <enum name="fl_none" value="0"/>
+        <enum name="fl_ease" value="1"/>
+        <enum name="fl_ripple" value="2"/>
+    </attr>
     <attr format="dimension" name="height"/>
     <attr format="boolean" name="isLightTheme"/>
     <attr format="string" name="title"/>
@@ -22,6 +112,15 @@
     <color name="background_floating_material_light">@android:color/white</color>
     <color name="background_material_dark">@color/material_grey_850</color>
     <color name="background_material_light">@color/material_grey_50</color>
+    <color name="black_overlay">#66000000</color>
+    <color name="blood_dark">#a63124</color>
+    <color name="blood_darker">#732219</color>
+    <color name="blood_light">#f2b6ae</color>
+    <color name="blood_primary">#d94130</color>
+    <color name="blossom_dark">#b57795</color>
+    <color name="blossom_darker">#8f5e76</color>
+    <color name="blossom_light">#e8d1dc</color>
+    <color name="blossom_primary">#e898bf</color>
     <color name="bright_foreground_disabled_material_dark">#80ffffff</color>
     <color name="bright_foreground_disabled_material_light">#80000000</color>
     <color name="bright_foreground_inverse_material_dark">@color/bright_foreground_material_light</color>
@@ -30,6 +129,10 @@
     <color name="bright_foreground_material_light">@android:color/black</color>
     <color name="button_material_dark">#ff5a595b</color>
     <color name="button_material_light">#ffd6d7d7</color>
+    <color name="candy_dark">#bf505a</color>
+    <color name="candy_darker">#80363c</color>
+    <color name="candy_light">#f5c4c8</color>
+    <color name="candy_primary">#f56773</color>
     <color name="colorAccent">#FFFFFF</color>
     <color name="colorControlHighlight">#DDBBBC</color>
     <color name="colorPrimary">#000000</color>
@@ -45,6 +148,14 @@
     <color name="common_signin_btn_light_text_disabled">#FFAAAAAA</color>
     <color name="common_signin_btn_light_text_focused">#FF737373</color>
     <color name="common_signin_btn_light_text_pressed">@android:color/white</color>
+    <color name="dark_dark">#202020</color>
+    <color name="dark_darker">#050505</color>
+    <color name="dark_light">#a3a3a3</color>
+    <color name="dark_primary">#454545</color>
+    <color name="deep_dark">#2d3845</color>
+    <color name="deep_darker">#232b35</color>
+    <color name="deep_light">#c7dbf4</color>
+    <color name="deep_primary">#2d3845</color>
     <color name="design_fab_shadow_end_color">@android:color/transparent</color>
     <color name="design_fab_shadow_mid_color">#14000000</color>
     <color name="design_fab_shadow_start_color">#44000000</color>
@@ -60,6 +171,14 @@
     <color name="dim_foreground_material_light">#ff323232</color>
     <color name="foreground_material_dark">@android:color/white</color>
     <color name="foreground_material_light">@android:color/black</color>
+    <color name="grape_dark">#4f456b</color>
+    <color name="grape_darker">#362f4a</color>
+    <color name="grape_light">#b1a2db</color>
+    <color name="grape_primary">#695b8e</color>
+    <color name="grass_dark">#1e7d5b</color>
+    <color name="grass_darker">#124c38</color>
+    <color name="grass_light">#a8e3ce</color>
+    <color name="grass_primary">#2ab081</color>
     <color name="highlighted_text_material_dark">#6680cbc4</color>
     <color name="highlighted_text_material_light">#66009688</color>
     <color name="hint_foreground_material_dark">@color/bright_foreground_disabled_material_dark</color>
@@ -77,6 +196,10 @@
     <color name="material_grey_800">#ff424242</color>
     <color name="material_grey_850">#ff303030</color>
     <color name="material_grey_900">#ff212121</color>
+    <color name="orange_dark">#cc5d35</color>
+    <color name="orange_darker">#994628</color>
+    <color name="orange_light">#ffbfa8</color>
+    <color name="orange_primary">#ff7342</color>
     <color name="primary_dark_material_dark">@android:color/black</color>
     <color name="primary_dark_material_light">@color/material_grey_600</color>
     <color name="primary_material_dark">@color/material_grey_900</color>
@@ -88,14 +211,31 @@
     <color name="ripple">#ECEFF1</color>
     <color name="ripple_material_dark">#33ffffff</color>
     <color name="ripple_material_light">#1f000000</color>
+    <color name="sand_dark">#d4a14a</color>
+    <color name="sand_darker">#ad843d</color>
+    <color name="sand_light">#fae8c8</color>
+    <color name="sand_primary">#fbbf58</color>
+    <color name="sea_dark">#1c52a2</color>
+    <color name="sea_darker">#1a3b6c</color>
+    <color name="sea_light">#d5e3f7</color>
+    <color name="sea_primary">#2d72d9</color>
     <color name="secondary_text_default_material_dark">#b3ffffff</color>
     <color name="secondary_text_default_material_light">#8a000000</color>
     <color name="secondary_text_disabled_material_dark">#36ffffff</color>
     <color name="secondary_text_disabled_material_light">#24000000</color>
+    <color name="sky_dark">#0e8b9e</color>
+    <color name="sky_darker">#0b6978</color>
+    <color name="sky_light">#b9e4eb</color>
+    <color name="sky_primary">#13b7d2</color>
+    <color name="snow_dark">#dddddd</color>
+    <color name="snow_darker">#c8c8c8</color>
+    <color name="snow_light">#fafafa</color>
+    <color name="snow_primary">#e8e8e8</color>
     <color name="switch_thumb_disabled_material_dark">#ff616161</color>
     <color name="switch_thumb_disabled_material_light">#ffbdbdbd</color>
     <color name="switch_thumb_normal_material_dark">#ffbdbdbd</color>
     <color name="switch_thumb_normal_material_light">#fff1f1f1</color>
+    <color name="theme">#a63124</color>
     <declare-styleable name="ActionBar"><attr name="navigationMode"><enum name="normal" value="0"/><enum name="listMode" value="1"/><enum name="tabMode" value="2"/></attr><attr name="displayOptions"><flag name="none" value="0"/><flag name="useLogo" value="0x1"/><flag name="showHome" value="0x2"/><flag name="homeAsUp" value="0x4"/><flag name="showTitle" value="0x8"/><flag name="showCustom" value="0x10"/><flag name="disableHome" value="0x20"/></attr><attr name="title"/><attr format="string" name="subtitle"/><attr format="reference" name="titleTextStyle"/><attr format="reference" name="subtitleTextStyle"/><attr format="reference" name="icon"/><attr format="reference" name="logo"/><attr format="reference" name="divider"/><attr format="reference" name="background"/><attr format="reference|color" name="backgroundStacked"/><attr format="reference|color" name="backgroundSplit"/><attr format="reference" name="customNavigationLayout"/><attr name="height"/><attr format="reference" name="homeLayout"/><attr format="reference" name="progressBarStyle"/><attr format="reference" name="indeterminateProgressStyle"/><attr format="dimension" name="progressBarPadding"/><attr name="homeAsUpIndicator"/><attr format="dimension" name="itemPadding"/><attr format="boolean" name="hideOnContentScroll"/><attr format="dimension" name="contentInsetStart"/><attr format="dimension" name="contentInsetEnd"/><attr format="dimension" name="contentInsetLeft"/><attr format="dimension" name="contentInsetRight"/><attr format="dimension" name="elevation"/><attr format="reference" name="popupTheme"/></declare-styleable>
     <declare-styleable name="ActionBarLayout"><attr name="android:layout_gravity"/></declare-styleable>
     <declare-styleable name="ActionMenuItemView"><attr name="android:minWidth"/></declare-styleable>
@@ -106,6 +246,7 @@
     <declare-styleable name="AppBarLayout"><attr name="elevation"/><attr name="android:background"/><attr format="boolean" name="expanded"/></declare-styleable>
     <declare-styleable name="AppBarLayout_LayoutParams"><attr name="layout_scrollFlags"><flag name="scroll" value="0x1"/><flag name="exitUntilCollapsed" value="0x2"/><flag name="enterAlways" value="0x4"/><flag name="enterAlwaysCollapsed" value="0x8"/><flag name="snap" value="0x10"/></attr><attr format="reference" name="layout_scrollInterpolator"/></declare-styleable>
     <declare-styleable name="AppCompatTextView"><attr format="reference|boolean" name="textAllCaps"/><attr name="android:textAppearance"/></declare-styleable>
+    <declare-styleable name="ButtonBarContainerTheme"><attr format="reference" name="metaButtonBarStyle"/><attr format="reference" name="metaButtonBarButtonStyle"/></declare-styleable>
     <declare-styleable name="ButtonBarLayout"><attr format="boolean" name="allowStacking"/></declare-styleable>
     <declare-styleable name="CollapsingAppBarLayout_LayoutParams"><attr name="layout_collapseMode"><enum name="none" value="0"/><enum name="pin" value="1"/><enum name="parallax" value="2"/></attr><attr format="float" name="layout_collapseParallaxMultiplier"/></declare-styleable>
     <declare-styleable name="CollapsingToolbarLayout"><attr format="dimension" name="expandedTitleMargin"/><attr format="dimension" name="expandedTitleMarginStart"/><attr format="dimension" name="expandedTitleMarginTop"/><attr format="dimension" name="expandedTitleMarginEnd"/><attr format="dimension" name="expandedTitleMarginBottom"/><attr format="reference" name="expandedTitleTextAppearance"/><attr format="reference" name="collapsedTitleTextAppearance"/><attr format="color" name="contentScrim"/><attr format="color" name="statusBarScrim"/><attr format="reference" name="toolbarId"/><attr name="collapsedTitleGravity"><flag name="top" value="0x30"/><flag name="bottom" value="0x50"/><flag name="left" value="0x03"/><flag name="right" value="0x05"/><flag name="center_vertical" value="0x10"/><flag name="fill_vertical" value="0x70"/><flag name="center_horizontal" value="0x01"/><flag name="center" value="0x11"/><flag name="start" value="0x00800003"/><flag name="end" value="0x00800005"/></attr><attr name="expandedTitleGravity"><flag name="top" value="0x30"/><flag name="bottom" value="0x50"/><flag name="left" value="0x03"/><flag name="right" value="0x05"/><flag name="center_vertical" value="0x10"/><flag name="fill_vertical" value="0x70"/><flag name="center_horizontal" value="0x01"/><flag name="center" value="0x11"/><flag name="start" value="0x00800003"/><flag name="end" value="0x00800005"/></attr><attr format="boolean" name="titleEnabled"/><attr name="title"/></declare-styleable>
@@ -140,6 +281,14 @@
     <declare-styleable name="View"><attr format="dimension" name="paddingStart"/><attr format="dimension" name="paddingEnd"/><attr name="android:focusable"/><attr format="reference" name="theme"/><attr name="android:theme"/></declare-styleable>
     <declare-styleable name="ViewBackgroundHelper"><attr name="android:background"/><attr format="color" name="backgroundTint"/><attr name="backgroundTintMode"><enum name="src_over" value="3"/><enum name="src_in" value="5"/><enum name="src_atop" value="9"/><enum name="multiply" value="14"/><enum name="screen" value="15"/></attr></declare-styleable>
     <declare-styleable name="ViewStubCompat"><attr name="android:layout"/><attr name="android:inflatedId"/><attr name="android:id"/></declare-styleable>
+    <declare-styleable name="fl_FlatAutoCompleteTextView"><attr name="fl_theme"/><attr name="fl_fontFamily"/><attr name="fl_fontWeight"/><attr name="fl_fontExtension"/><attr name="fl_textAppearance"/><attr name="fl_cornerRadius"/><attr name="fl_borderWidth"/><attr format="integer" name="fl_autoFieldStyle"><enum name="flat" value="0"/><enum name="box" value="1"/><enum name="transparent" value="2"/></attr></declare-styleable>
+    <declare-styleable name="fl_FlatButton"><attr name="fl_theme"/><attr name="fl_fontFamily"/><attr name="fl_fontWeight"/><attr name="fl_fontExtension"/><attr name="fl_textAppearance"/><attr name="fl_cornerRadius"/><attr name="fl_touchEffect"/><attr format="dimension" name="fl_blockButtonEffectHeight"/></declare-styleable>
+    <declare-styleable name="fl_FlatCheckBox"><attr name="fl_theme"/><attr name="fl_fontFamily"/><attr name="fl_fontWeight"/><attr name="fl_fontExtension"/><attr name="fl_cornerRadius"/><attr name="fl_size"/><attr name="fl_dotMargin"/></declare-styleable>
+    <declare-styleable name="fl_FlatEditText"><attr name="fl_theme"/><attr name="fl_fontFamily"/><attr name="fl_fontWeight"/><attr name="fl_fontExtension"/><attr name="fl_textAppearance"/><attr name="fl_cornerRadius"/><attr name="fl_borderWidth"/><attr format="integer" name="fl_fieldStyle"><enum name="fl_flat" value="0"/><enum name="fl_box" value="1"/><enum name="fl_transparent" value="2"/></attr></declare-styleable>
+    <declare-styleable name="fl_FlatRadioButton"><attr name="fl_theme"/><attr name="fl_fontFamily"/><attr name="fl_fontWeight"/><attr name="fl_fontExtension"/><attr name="fl_borderWidth"/><attr name="fl_size"/><attr name="fl_dotMargin"/></declare-styleable>
+    <declare-styleable name="fl_FlatSeekBar"><attr name="fl_theme"/><attr name="fl_size"/></declare-styleable>
+    <declare-styleable name="fl_FlatTextView"><attr name="fl_theme"/><attr name="fl_fontFamily"/><attr name="fl_fontWeight"/><attr name="fl_fontExtension"/><attr name="fl_cornerRadius"/><attr name="fl_borderWidth"/><attr format="integer" name="fl_textColor"><enum name="fl_darker" value="0"/><enum name="fl_dark" value="1"/><enum name="fl_main" value="2"/><enum name="fl_light" value="3"/></attr><attr format="integer" name="fl_backgroundColor"><enum name="fl_darker" value="0"/><enum name="fl_dark" value="1"/><enum name="fl_main" value="2"/><enum name="fl_light" value="3"/></attr><attr format="color" name="fl_customBackgroundColor"/></declare-styleable>
+    <declare-styleable name="fl_FlatToggleButton"><attr name="fl_theme"/><attr name="fl_cornerRadius"/><attr format="dimension" name="fl_space"/></declare-styleable>
     <dimen name="abc_action_bar_content_inset_material">16dp</dimen>
     <dimen name="abc_action_bar_default_height_material">56dp</dimen>
     <dimen name="abc_action_bar_default_padding_end_material">0dp</dimen>
@@ -296,6 +445,7 @@
     <string name="abc_shareactionprovider_share_with">Share with</string>
     <string name="abc_shareactionprovider_share_with_application">Share with %s</string>
     <string name="abc_toolbar_collapse_description">Collapse</string>
+    <string name="action_edit_task">Task Edit</string>
     <string name="action_settings">Settings</string>
     <string name="app_name">LifeHolder</string>
     <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
@@ -333,6 +483,8 @@
     <string name="common_google_play_services_updating_title">Google Play services are updating</string>
     <string name="common_open_on_phone">Open on phone</string>
     <string name="define_FloatingActionButton"/>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="library_FloatingActionButton_author">Oleksandr Melnykov</string>
     <string name="library_FloatingActionButton_authorWebsite">https://github.com/makovkastar/FloatingActionButton</string>
     <string name="library_FloatingActionButton_isOpenSource">true</string>
@@ -343,6 +495,7 @@
     <string name="library_FloatingActionButton_licenseId">mit</string>
     <string name="library_FloatingActionButton_repositoryLink">https://github.com/makovkastar/FloatingActionButton</string>
     <string name="status_bar_notification_info_overflow">999+</string>
+    <string name="title_activity_edit">EditActivity</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>
     <style name="Animation.AppCompat.Dialog" parent="Base.Animation.AppCompat.Dialog"/>
@@ -352,6 +505,10 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="windowNoTitle">true</item>
     </style>
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
     <style name="AppTheme.NoActionBar">
