@@ -8,9 +8,9 @@ package com.google.android.gms.appindexing;
 
 public final class R {
 	public static final class attr {
-		public static final int circleCrop = 0x7f010052;
-		public static final int imageAspectRatio = 0x7f010051;
-		public static final int imageAspectRatioAdjust = 0x7f010050;
+		public static final int circleCrop = 0x7f010058;
+		public static final int imageAspectRatio = 0x7f010057;
+		public static final int imageAspectRatioAdjust = 0x7f010056;
 	}
 	public static final class color {
 		public static final int common_action_bar_splitter = 0x7f0b0017;
@@ -23,8 +23,8 @@ public final class R {
 		public static final int common_signin_btn_light_text_disabled = 0x7f0b001e;
 		public static final int common_signin_btn_light_text_focused = 0x7f0b001f;
 		public static final int common_signin_btn_light_text_pressed = 0x7f0b0020;
-		public static final int common_signin_btn_text_dark = 0x7f0b005c;
-		public static final int common_signin_btn_text_light = 0x7f0b005d;
+		public static final int common_signin_btn_text_dark = 0x7f0b005e;
+		public static final int common_signin_btn_text_light = 0x7f0b005f;
 	}
 	public static final class drawable {
 		public static final int common_full_open_on_phone = 0x7f020051;
@@ -79,7 +79,7 @@ public final class R {
 	public static final class style {
 	}
 	public static final class styleable {
-		public static final int[] LoadingImageView = { 0x7f010050, 0x7f010051, 0x7f010052 };
+		public static final int[] LoadingImageView = { 0x7f010056, 0x7f010057, 0x7f010058 };
 		public static final int LoadingImageView_circleCrop = 2;
 		public static final int LoadingImageView_imageAspectRatio = 1;
 		public static final int LoadingImageView_imageAspectRatioAdjust = 0;

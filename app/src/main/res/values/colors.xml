@@ -3,6 +3,7 @@
     <color name="colorPrimary">#000000</color>
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#FFFFFF</color>
-    <color name="colorControlHighlight">#BBAAAB</color>
+    <color name="colorControlHighlight">#DDBBBC</color>
+    <color name="ripple">#ECEFF1</color>
     <color name="colorWhite">#FFFFFF</color>>
 </resources>
