@@ -372,6 +372,10 @@
         "source": "E:\\KC\\Yuri\\workroom\\Android programing\\LifeHolder\\app\\build\\intermediates\\exploded-aar\\com.oguzdev\\CircularFloatingActionMenu\\1.0.2\\res\\drawable-xxhdpi-v4\\button_action_dark.png"
     },
     {
+        "merged": "E:\\KC\\Yuri\\workroom\\lifeholder\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\sprite_check.png",
+        "source": "E:\\KC\\Yuri\\workroom\\lifeholder\\app\\build\\intermediates\\exploded-aar\\com.github.navasmdc\\MaterialDesign\\1.5\\res\\drawable-xxhdpi-v4\\sprite_check.png"
+    },
+    {
         "merged": "E:\\KC\\Yuri\\workroom\\lifeholder\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4\\button_sub_action_dark_touch.png",
         "source": "E:\\KC\\Yuri\\workroom\\lifeholder\\app\\build\\intermediates\\exploded-aar\\com.oguzdev\\CircularFloatingActionMenu\\1.0.2\\res\\drawable-xxhdpi-v4\\button_sub_action_dark_touch.png"
     },

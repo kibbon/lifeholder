@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="?attr/actionBarSize"
+    tools:context="com.example.tengyu.lifeholder.EditActivity"
+    tools:showIn="@layout/activity_edit">
+
+
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:cardBackgroundColor="@color/colorWhite"
+        card_view:cardCornerRadius="2dp"
+        android:layout_margin="10dp"
+        card_view:cardElevation="6dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/activity_vertical_margin"
+                android:layout_marginRight="@dimen/activity_vertical_margin"
+                layout="@layout/divider"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="center">
+            <TextView
+                android:text="TOMAT"
+                android:textColor="@color/themeHolyLight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="32sp"/>
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_object_tomato_theme"/>
+            <TextView
+                android:text="ES: "
+                android:textColor="@color/themeHolyLight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical|center_horizontal"
+                android:textSize="32sp"/>
+                <TextView
+                    android:id="@+id/tomatotask_edit_tomatoIndex"
+                    android:layout_gravity="center"
+                    android:text="7"
+                    android:textColor="@color/themeLight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="32sp"/>
+            </LinearLayout>
+            <com.appyvet.rangebar.RangeBar
+                android:id="@+id/tomatotask_edit_rangebar"
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                custom:rangeBar="false"
+                custom:tickStart="1"
+                custom:tickInterval="1"
+                custom:tickEnd="7"
+                custom:temporaryPins="true"
+                custom:pinMaxFont="12sp"
+                custom:tickColor="@color/themeDark"
+                custom:selectorColor="@color/theme"
+                custom:selectorSize="8dp"
+                custom:connectingLineColor="@color/themeLight"
+                custom:pinColor="@color/themeLight"
+                custom:rangeBarColor="@color/themeHolyLight"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp">
+
+                <TextView
+                    android:id="@+id/start_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:text="@string/action_edit_min_tomato"
+                    android:layout_marginLeft="14dp" />
+
+                <TextView
+                    android:id="@+id/end_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="@string/action_edit_max_tomato"
+                    android:layout_marginRight="14dp"/>
+            </RelativeLayout>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+
+</LinearLayout>

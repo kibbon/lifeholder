@@ -2,7 +2,9 @@
     <string name="app_name">LifeHolder</string>
     <string name="action_settings">Settings</string>
     <string name="action_edit_task">Task Edit</string>
-
+    <string name="action_edit_title">Task Title</string>
+    <string name="action_edit_min_tomato">1×25min</string>
+    <string name="action_edit_max_tomato">7×25min</string>
     <string name="title_activity_edit">EditActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>

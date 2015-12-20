@@ -76,6 +76,10 @@
         "source": "E:\\KC\\Yuri\\workroom\\Android programing\\LifeHolder\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-mdpi\\abc_btn_radio_to_on_mtrl_015.png"
     },
     {
+        "merged": "E:\\KC\\Yuri\\workroom\\lifeholder\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\sprite_check.png",
+        "source": "E:\\KC\\Yuri\\workroom\\lifeholder\\app\\build\\intermediates\\exploded-aar\\com.github.navasmdc\\MaterialDesign\\1.5\\res\\drawable-mdpi-v4\\sprite_check.png"
+    },
+    {
         "merged": "E:\\KC\\Yuri\\workroom\\lifeholder\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\abc_btn_check_to_on_mtrl_000.png",
         "source": "E:\\KC\\Yuri\\workroom\\lifeholder\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\drawable-mdpi\\abc_btn_check_to_on_mtrl_000.png"
     },
@@ -318,6 +322,10 @@
     {
         "merged": "E:\\KC\\Yuri\\workroom\\Android programing\\LifeHolder\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\button_sub_action_dark.png",
         "source": "E:\\KC\\Yuri\\workroom\\Android programing\\LifeHolder\\app\\build\\intermediates\\exploded-aar\\com.oguzdev\\CircularFloatingActionMenu\\1.0.2\\res\\drawable-mdpi-v4\\button_sub_action_dark.png"
+    },
+    {
+        "merged": "E:\\KC\\Yuri\\workroom\\lifeholder\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\ic_launcher.png",
+        "source": "E:\\KC\\Yuri\\workroom\\lifeholder\\app\\build\\intermediates\\exploded-aar\\com.github.navasmdc\\MaterialDesign\\1.5\\res\\drawable-mdpi-v4\\ic_launcher.png"
     },
     {
         "merged": "E:\\KC\\Yuri\\workroom\\Android programing\\LifeHolder\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\button_sub_action_dark_touch.png",

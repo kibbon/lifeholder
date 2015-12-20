@@ -22,21 +22,21 @@ public final class R {
 		public static final int snow = 0x7f0b000b;
 	}
 	public static final class attr {
-		public static final int fl_autoFieldStyle = 0x7f010125;
-		public static final int fl_backgroundColor = 0x7f010129;
-		public static final int fl_blockButtonEffectHeight = 0x7f010126;
+		public static final int fl_autoFieldStyle = 0x7f010144;
+		public static final int fl_backgroundColor = 0x7f010148;
+		public static final int fl_blockButtonEffectHeight = 0x7f010145;
 		public static final int fl_borderWidth = 0x7f010001;
 		public static final int fl_cornerRadius = 0x7f010002;
-		public static final int fl_customBackgroundColor = 0x7f01012a;
+		public static final int fl_customBackgroundColor = 0x7f010149;
 		public static final int fl_dotMargin = 0x7f010003;
-		public static final int fl_fieldStyle = 0x7f010127;
+		public static final int fl_fieldStyle = 0x7f010146;
 		public static final int fl_fontExtension = 0x7f010004;
 		public static final int fl_fontFamily = 0x7f010005;
 		public static final int fl_fontWeight = 0x7f010006;
 		public static final int fl_size = 0x7f010007;
-		public static final int fl_space = 0x7f01012b;
+		public static final int fl_space = 0x7f01014a;
 		public static final int fl_textAppearance = 0x7f010008;
-		public static final int fl_textColor = 0x7f010128;
+		public static final int fl_textColor = 0x7f010147;
 		public static final int fl_theme = 0x7f010009;
 		public static final int fl_touchEffect = 0x7f01000a;
 	}
@@ -53,42 +53,42 @@ public final class R {
 		public static final int candy_darker = 0x7f0c001c;
 		public static final int candy_light = 0x7f0c001d;
 		public static final int candy_primary = 0x7f0c001e;
-		public static final int dark_dark = 0x7f0c002e;
-		public static final int dark_darker = 0x7f0c002f;
-		public static final int dark_light = 0x7f0c0030;
-		public static final int dark_primary = 0x7f0c0031;
-		public static final int deep_dark = 0x7f0c0032;
-		public static final int deep_darker = 0x7f0c0033;
-		public static final int deep_light = 0x7f0c0034;
-		public static final int deep_primary = 0x7f0c0035;
-		public static final int grape_dark = 0x7f0c0045;
-		public static final int grape_darker = 0x7f0c0046;
-		public static final int grape_light = 0x7f0c0047;
-		public static final int grape_primary = 0x7f0c0048;
-		public static final int grass_dark = 0x7f0c0049;
-		public static final int grass_darker = 0x7f0c004a;
-		public static final int grass_light = 0x7f0c004b;
-		public static final int grass_primary = 0x7f0c004c;
-		public static final int orange_dark = 0x7f0c005e;
-		public static final int orange_darker = 0x7f0c005f;
-		public static final int orange_light = 0x7f0c0060;
-		public static final int orange_primary = 0x7f0c0061;
-		public static final int sand_dark = 0x7f0c006d;
-		public static final int sand_darker = 0x7f0c006e;
-		public static final int sand_light = 0x7f0c006f;
-		public static final int sand_primary = 0x7f0c0070;
-		public static final int sea_dark = 0x7f0c0071;
-		public static final int sea_darker = 0x7f0c0072;
-		public static final int sea_light = 0x7f0c0073;
-		public static final int sea_primary = 0x7f0c0074;
-		public static final int sky_dark = 0x7f0c0079;
-		public static final int sky_darker = 0x7f0c007a;
-		public static final int sky_light = 0x7f0c007b;
-		public static final int sky_primary = 0x7f0c007c;
-		public static final int snow_dark = 0x7f0c007d;
-		public static final int snow_darker = 0x7f0c007e;
-		public static final int snow_light = 0x7f0c007f;
-		public static final int snow_primary = 0x7f0c0080;
+		public static final int dark_dark = 0x7f0c0034;
+		public static final int dark_darker = 0x7f0c0035;
+		public static final int dark_light = 0x7f0c0036;
+		public static final int dark_primary = 0x7f0c0037;
+		public static final int deep_dark = 0x7f0c0038;
+		public static final int deep_darker = 0x7f0c0039;
+		public static final int deep_light = 0x7f0c003a;
+		public static final int deep_primary = 0x7f0c003b;
+		public static final int grape_dark = 0x7f0c004b;
+		public static final int grape_darker = 0x7f0c004c;
+		public static final int grape_light = 0x7f0c004d;
+		public static final int grape_primary = 0x7f0c004e;
+		public static final int grass_dark = 0x7f0c004f;
+		public static final int grass_darker = 0x7f0c0050;
+		public static final int grass_light = 0x7f0c0051;
+		public static final int grass_primary = 0x7f0c0052;
+		public static final int orange_dark = 0x7f0c0064;
+		public static final int orange_darker = 0x7f0c0065;
+		public static final int orange_light = 0x7f0c0066;
+		public static final int orange_primary = 0x7f0c0067;
+		public static final int sand_dark = 0x7f0c0072;
+		public static final int sand_darker = 0x7f0c0073;
+		public static final int sand_light = 0x7f0c0074;
+		public static final int sand_primary = 0x7f0c0075;
+		public static final int sea_dark = 0x7f0c0076;
+		public static final int sea_darker = 0x7f0c0077;
+		public static final int sea_light = 0x7f0c0078;
+		public static final int sea_primary = 0x7f0c0079;
+		public static final int sky_dark = 0x7f0c007e;
+		public static final int sky_darker = 0x7f0c007f;
+		public static final int sky_light = 0x7f0c0080;
+		public static final int sky_primary = 0x7f0c0081;
+		public static final int snow_dark = 0x7f0c0082;
+		public static final int snow_darker = 0x7f0c0083;
+		public static final int snow_light = 0x7f0c0084;
+		public static final int snow_primary = 0x7f0c0085;
 	}
 	public static final class id {
 		public static final int box = 0x7f0d0041;
@@ -106,10 +106,10 @@ public final class R {
 		public static final int transparent = 0x7f0d0043;
 	}
 	public static final class string {
-		public static final int app_name = 0x7f060034;
+		public static final int app_name = 0x7f060037;
 	}
 	public static final class styleable {
-		public static final int[] fl_FlatAutoCompleteTextView = { 0x7f010001, 0x7f010002, 0x7f010004, 0x7f010005, 0x7f010006, 0x7f010008, 0x7f010009, 0x7f010125 };
+		public static final int[] fl_FlatAutoCompleteTextView = { 0x7f010001, 0x7f010002, 0x7f010004, 0x7f010005, 0x7f010006, 0x7f010008, 0x7f010009, 0x7f010144 };
 		public static final int fl_FlatAutoCompleteTextView_fl_autoFieldStyle = 7;
 		public static final int fl_FlatAutoCompleteTextView_fl_borderWidth = 0;
 		public static final int fl_FlatAutoCompleteTextView_fl_cornerRadius = 1;
@@ -118,7 +118,7 @@ public final class R {
 		public static final int fl_FlatAutoCompleteTextView_fl_fontWeight = 4;
 		public static final int fl_FlatAutoCompleteTextView_fl_textAppearance = 5;
 		public static final int fl_FlatAutoCompleteTextView_fl_theme = 6;
-		public static final int[] fl_FlatButton = { 0x7f010002, 0x7f010004, 0x7f010005, 0x7f010006, 0x7f010008, 0x7f010009, 0x7f01000a, 0x7f010126 };
+		public static final int[] fl_FlatButton = { 0x7f010002, 0x7f010004, 0x7f010005, 0x7f010006, 0x7f010008, 0x7f010009, 0x7f01000a, 0x7f010145 };
 		public static final int fl_FlatButton_fl_blockButtonEffectHeight = 7;
 		public static final int fl_FlatButton_fl_cornerRadius = 0;
 		public static final int fl_FlatButton_fl_fontExtension = 1;
@@ -135,7 +135,7 @@ public final class R {
 		public static final int fl_FlatCheckBox_fl_fontWeight = 4;
 		public static final int fl_FlatCheckBox_fl_size = 5;
 		public static final int fl_FlatCheckBox_fl_theme = 6;
-		public static final int[] fl_FlatEditText = { 0x7f010001, 0x7f010002, 0x7f010004, 0x7f010005, 0x7f010006, 0x7f010008, 0x7f010009, 0x7f010127 };
+		public static final int[] fl_FlatEditText = { 0x7f010001, 0x7f010002, 0x7f010004, 0x7f010005, 0x7f010006, 0x7f010008, 0x7f010009, 0x7f010146 };
 		public static final int fl_FlatEditText_fl_borderWidth = 0;
 		public static final int fl_FlatEditText_fl_cornerRadius = 1;
 		public static final int fl_FlatEditText_fl_fieldStyle = 7;
@@ -155,7 +155,7 @@ public final class R {
 		public static final int[] fl_FlatSeekBar = { 0x7f010007, 0x7f010009 };
 		public static final int fl_FlatSeekBar_fl_size = 0;
 		public static final int fl_FlatSeekBar_fl_theme = 1;
-		public static final int[] fl_FlatTextView = { 0x7f010001, 0x7f010002, 0x7f010004, 0x7f010005, 0x7f010006, 0x7f010009, 0x7f010128, 0x7f010129, 0x7f01012a };
+		public static final int[] fl_FlatTextView = { 0x7f010001, 0x7f010002, 0x7f010004, 0x7f010005, 0x7f010006, 0x7f010009, 0x7f010147, 0x7f010148, 0x7f010149 };
 		public static final int fl_FlatTextView_fl_backgroundColor = 7;
 		public static final int fl_FlatTextView_fl_borderWidth = 0;
 		public static final int fl_FlatTextView_fl_cornerRadius = 1;
@@ -165,7 +165,7 @@ public final class R {
 		public static final int fl_FlatTextView_fl_fontWeight = 4;
 		public static final int fl_FlatTextView_fl_textColor = 6;
 		public static final int fl_FlatTextView_fl_theme = 5;
-		public static final int[] fl_FlatToggleButton = { 0x7f010002, 0x7f010009, 0x7f01012b };
+		public static final int[] fl_FlatToggleButton = { 0x7f010002, 0x7f010009, 0x7f01014a };
 		public static final int fl_FlatToggleButton_fl_cornerRadius = 0;
 		public static final int fl_FlatToggleButton_fl_space = 2;
 		public static final int fl_FlatToggleButton_fl_theme = 1;
