@@ -7,9 +7,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
@@ -21,10 +19,9 @@ import com.baoyz.swipemenulistview.SwipeMenu;
 import com.baoyz.swipemenulistview.SwipeMenuCreator;
 import com.baoyz.swipemenulistview.SwipeMenuItem;
 import com.baoyz.swipemenulistview.SwipeMenuListView;
-import com.cengalabs.flatui.FlatUI;
-import com.example.tengyu.lifeholder.com.example.tengyu.lifeholder.tomato.tomatoIO;
-import com.example.tengyu.lifeholder.com.example.tengyu.lifeholder.tomato.tomatoTask;
-import com.example.tengyu.lifeholder.com.example.tengyu.lifeholder.tomato.tomatoTaskAdapter;
+import com.example.tengyu.lifeholder.tomato.tomatoIO;
+import com.example.tengyu.lifeholder.tomato.tomatoTask;
+import com.example.tengyu.lifeholder.tomato.tomatoTaskAdapter;
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -35,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
      * ATTENTION: This was auto-generated to implement the App Indexing API.
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
+    public final static String PAR_KEY = "com.andy.par";
+
     private GoogleApiClient client;
     private List<tomatoTask> tomatoList;
     private SwipeMenuListView listView;
@@ -43,10 +42,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-        // Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        // setSupportActionBar(toolbar);
+        tomatoList = tomatoIO.testTomatoes();
         listView = (SwipeMenuListView) findViewById(R.id.tomatotask_list_view);
 
         SwipeMenuCreator creator = new SwipeMenuCreator(){
@@ -79,7 +75,6 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         listView.setMenuCreator(creator);
-
         listView.setOnMenuItemClickListener(new SwipeMenuListView.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(int position, SwipeMenu menu, int index) {
@@ -87,12 +82,18 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("MenuClick", String.valueOf(index));
                 switch (index) {
                     case 0:
-                        //edit
-                        //edit(item);
+                        Intent intent = new Intent("com.example.tengyu.lifeholder.ACTION_EDIT");
+                        Bundle bundle = new Bundle();
+                        tomatoTask tomatoTp = tomatoList.get(position);
+                        bundle.putParcelable(PAR_KEY, tomatoTp);
+                        intent.putExtras(bundle);
+                        startActivityForResult(intent,position);
                         break;
                     case 1:
-                        //delete
-                        //delete(item);
+                        tomatoList.remove(position);
+                        tomatoTaskAdapter adapter = new tomatoTaskAdapter(MainActivity.this,  R.layout.tomatotask_item, tomatoList);
+                        listView.setAdapter(adapter);
+                        Toast.makeText(getApplicationContext(),"Task deleted!",Toast.LENGTH_SHORT).show();
                         break;
                     default:
                         break;
@@ -107,9 +108,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent("com.example.tengyu.lifeholder.ACTION_EDIT");
+                Bundle bundle = new Bundle();
                 tomatoTask tomatoTp = new tomatoTask();
-                startActivity(intent);
-               //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG) .setAction("Action", null).show();
+                bundle.putParcelable(PAR_KEY, tomatoTp);
+                intent.putExtras(bundle);
+                startActivityForResult(intent,0);
+                //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG) .setAction("Action", null).show();
             }
         });
         // ATTENTION: This was auto-generated to implement the App Indexing API.
@@ -143,10 +147,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        tomatoList = tomatoIO.testTomatoes();
         tomatoTaskAdapter adapter = new tomatoTaskAdapter(MainActivity.this,  R.layout.tomatotask_item, tomatoList);
         listView.setAdapter(adapter);
-        super.onStart();
 
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
@@ -182,6 +184,34 @@ public class MainActivity extends AppCompatActivity {
         );
         AppIndex.AppIndexApi.end(client, viewAction);
         client.disconnect();
+    }
+
+    @Override
+    protected  void onActivityResult(int requestCode, int resultCode, Intent data){
+         boolean flag = false;
+        switch (requestCode){
+            case 1:
+                if(resultCode == RESULT_OK) {
+                    tomatoTask tomatoTp = data.getParcelableExtra(MainActivity.PAR_KEY);
+                    for (int i = 0; i < tomatoList.size(); i++) {
+                        if (tomatoList.get(i).getTitle().equals(tomatoTp.getTitle())){
+                            tomatoTp.setDate(tomatoList.get(i).getDate());
+                            tomatoList.set(i, tomatoTp);
+                            flag = true;
+                            Toast.makeText(this,"Task list updated!",Toast.LENGTH_SHORT).show();
+                            break;
+                        }
+                    }
+                    if (!flag) {
+                        tomatoList.add(tomatoList.size(),tomatoTp);
+                        Toast.makeText(this,"New task joined!",Toast.LENGTH_SHORT).show();
+                    }
+                    break;
+                }
+                break;
+            default:
+                break;
+        }
     }
 
     private int dp2px(int dp) {

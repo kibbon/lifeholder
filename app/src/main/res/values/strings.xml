@@ -5,6 +5,11 @@
     <string name="action_edit_title">Task Title</string>
     <string name="action_edit_min_tomato">1×25min</string>
     <string name="action_edit_max_tomato">7×25min</string>
+    <string name="action_edit_title_time">SelectTime</string>
+    <string name="action_edit_title_deadline">Till when?</string>
+    <string name="action_save">Save</string>
+    <string name="result_complete">Complete</string>
+    <string name="result_error">Error</string>
     <string name="title_activity_edit">EditActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
