@@ -20,6 +20,25 @@
                         "endOffset": 303
                     }
                 }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 132,
+                    "endColumn": 46,
+                    "endOffset": 174
+                },
+                "from": {
+                    "file": "E:\\KC\\Yuri\\workroom\\lifeholder\\app\\build\\intermediates\\exploded-aar\\com.github.sd6352051.niftydialogeffects\\niftydialogeffects\\1.0.0\\res\\values-w720dp-v13\\values.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 194,
+                        "endColumn": 46,
+                        "endOffset": 236
+                    }
+                }
             }
         ]
     },

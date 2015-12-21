@@ -7,12 +7,16 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.Transformation;
 import android.widget.Toast;
 
 import com.baoyz.swipemenulistview.SwipeMenu;
@@ -22,9 +26,12 @@ import com.baoyz.swipemenulistview.SwipeMenuListView;
 import com.example.tengyu.lifeholder.tomato.tomatoIO;
 import com.example.tengyu.lifeholder.tomato.tomatoTask;
 import com.example.tengyu.lifeholder.tomato.tomatoTaskAdapter;
+import com.gitonway.lee.niftymodaldialogeffects.lib.Effectstype;
+import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder;
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.nhaarman.listviewanimations.appearance.simple.ScaleInAnimationAdapter;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,10 +40,14 @@ public class MainActivity extends AppCompatActivity {
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
     public final static String PAR_KEY = "com.andy.par";
-
+    public static final int ANIMATION_DURATION = 200;
+    private boolean ifIflate;
+    private int selectPostion;
     private GoogleApiClient client;
     private List<tomatoTask> tomatoList;
     private SwipeMenuListView listView;
+    private ScaleInAnimationAdapter animationAdapter;
+    private NiftyDialogBuilder deleteWarning;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +55,25 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         tomatoList = tomatoIO.testTomatoes();
         listView = (SwipeMenuListView) findViewById(R.id.tomatotask_list_view);
+        ifIflate = true;
+        deleteWarning = NiftyDialogBuilder.getInstance(this);
+
+        deleteWarning.setButton1Click(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deleteWarning.dismiss();
+                tomatoList.remove(selectPostion);
+                flush();
+                Toast.makeText(getApplicationContext(), "Task deleted!", Toast.LENGTH_SHORT).show();
+            }
+        });
+        deleteWarning.setButton2Click(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deleteWarning.dismiss();//DO NOTHING
+            }
+        });
+        deleteWarning.setCancelable(true);
 
         SwipeMenuCreator creator = new SwipeMenuCreator(){
             @Override
@@ -87,13 +117,20 @@ public class MainActivity extends AppCompatActivity {
                         tomatoTask tomatoTp = tomatoList.get(position);
                         bundle.putParcelable(PAR_KEY, tomatoTp);
                         intent.putExtras(bundle);
-                        startActivityForResult(intent,position);
+                        startActivityForResult(intent,position+1);
                         break;
                     case 1:
-                        tomatoList.remove(position);
-                        tomatoTaskAdapter adapter = new tomatoTaskAdapter(MainActivity.this,  R.layout.tomatotask_item, tomatoList);
-                        listView.setAdapter(adapter);
-                        Toast.makeText(getApplicationContext(),"Task deleted!",Toast.LENGTH_SHORT).show();
+                        deleteWarning.withTitle("Warning")
+                                .withMessage(" Confirm to remove ? ")             //.withMessage(null)  no Msg
+                                .withDialogColor(getResources().getColor(R.color.themeLight))
+                                .withDialogColor(getResources().getColor(R.color.theme))
+                                .withIcon(getResources().getDrawable(R.drawable.ic_action_warning))
+                                .withDuration(500)                                          //def
+                                .withEffect(Effectstype.RotateBottom)                               //def Effectstype.Slidetop
+                                .withButton1Text("OK")                                      //def gone
+                                .withButton2Text("Cancel")                                  //def gone
+                                .isCancelableOnTouchOutside(true)   .show();
+                        selectPostion = position;
                         break;
                     default:
                         break;
@@ -101,6 +138,7 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+
 
         com.melnykov.fab.FloatingActionButton fab = (com.melnykov.fab.FloatingActionButton) findViewById(R.id.fab);
         fab.attachToListView(listView);
@@ -147,9 +185,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        tomatoTaskAdapter adapter = new tomatoTaskAdapter(MainActivity.this,  R.layout.tomatotask_item, tomatoList);
-        listView.setAdapter(adapter);
-
+        if(ifIflate)
+            flush();
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client.connect();
@@ -186,30 +223,32 @@ public class MainActivity extends AppCompatActivity {
         client.disconnect();
     }
 
+    private void flush(){
+        animationAdapter = new ScaleInAnimationAdapter(new tomatoTaskAdapter(MainActivity.this,  R.layout.tomatotask_item, tomatoList));
+        animationAdapter.setAbsListView(listView);
+        listView.setAdapter(animationAdapter);
+        ifIflate = false;
+    }
+
     @Override
     protected  void onActivityResult(int requestCode, int resultCode, Intent data){
-         boolean flag = false;
         switch (requestCode){
-            case 1:
-                if(resultCode == RESULT_OK) {
+            case 0:
+                if(resultCode == RESULT_OK){
                     tomatoTask tomatoTp = data.getParcelableExtra(MainActivity.PAR_KEY);
-                    for (int i = 0; i < tomatoList.size(); i++) {
-                        if (tomatoList.get(i).getTitle().equals(tomatoTp.getTitle())){
-                            tomatoTp.setDate(tomatoList.get(i).getDate());
-                            tomatoList.set(i, tomatoTp);
-                            flag = true;
-                            Toast.makeText(this,"Task list updated!",Toast.LENGTH_SHORT).show();
-                            break;
-                        }
-                    }
-                    if (!flag) {
-                        tomatoList.add(tomatoList.size(),tomatoTp);
-                        Toast.makeText(this,"New task joined!",Toast.LENGTH_SHORT).show();
-                    }
-                    break;
+                    tomatoList.add(tomatoTp);
+                    Toast.makeText(this,"New task joined!",Toast.LENGTH_SHORT).show();
+                    ifIflate = true;
                 }
                 break;
             default:
+                if(resultCode == RESULT_OK) {
+                    tomatoTask tomatoTp = data.getParcelableExtra(MainActivity.PAR_KEY);
+                    tomatoTp.setDate(tomatoList.get(requestCode - 1).getDate());
+                    tomatoList.set(requestCode - 1, tomatoTp);
+                    Toast.makeText(this,"Task list updated!",Toast.LENGTH_SHORT).show();
+                    ifIflate = true;
+                }
                 break;
         }
     }
@@ -218,4 +257,5 @@ public class MainActivity extends AppCompatActivity {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp,
                 getResources().getDisplayMetrics());
     }
+
 }

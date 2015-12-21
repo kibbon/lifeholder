@@ -1,7 +1,11 @@
 package com.example.tengyu.lifeholder;
 
+import android.animation.ValueAnimator;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -11,6 +15,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -25,11 +30,9 @@ import com.appyvet.rangebar.RangeBar;
 import com.dd.CircularProgressButton;
 import com.example.tengyu.lifeholder.tomato.tomatoTask;
 import com.fourmob.datetimepicker.date.DatePickerDialog;
-import com.kyleduo.switchbutton.SwitchButton;
 import com.sleepbot.datetimepicker.time.RadialPickerLayout;
 import com.sleepbot.datetimepicker.time.TimePickerDialog;
 
-import com.kyleduo.switchbutton.SwitchButton;
 import java.util.Calendar;
 import java.util.Date;
 import java.text.SimpleDateFormat;
@@ -45,7 +48,6 @@ public class EditActivity extends AppCompatActivity implements com.fourmob.datet
     private EditText tomato_title;
     private com.kyleduo.switchbutton.SwitchButton tomato_ifRemind;
     private tomatoTask tomato;
-    //private TimePickerView pvTime;
     private com.fourmob.datetimepicker.date.DatePickerDialog datePickerDialog;
     private com.sleepbot.datetimepicker.time.TimePickerDialog timePickerDialog;
     private CircularProgressButton tomato_save;
@@ -55,6 +57,30 @@ public class EditActivity extends AppCompatActivity implements com.fourmob.datet
     private int day;
     private int hours;
     private int minutes;
+
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            Intent intent = new Intent();
+            if(tomato.getTitle().equals("")==false){
+                Bundle bundle = new Bundle();
+                bundle.putParcelable(MainActivity.PAR_KEY, tomato);
+                intent.putExtras(bundle);
+                setResult(RESULT_OK, intent);
+            }
+            else
+            setResult(RESULT_CANCELED, intent);
+            finish();
+        }
+    };
+
+    private Runnable mRunnable = new Runnable() {
+        @Override
+        public void run() {
+            mHandler.sendEmptyMessage(1);
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -138,21 +164,14 @@ public class EditActivity extends AppCompatActivity implements com.fourmob.datet
             public void onClick(View v) {
                 if (tomato_save.getProgress() == 0) {
                     if(tomato.getTitle().equals("")==false) {
-                        tomato_save.setProgress(100);
+                        simulateSuccessProgress(tomato_save);
                         Calendar cr = Calendar.getInstance();
-                        cr.set(year,month,day,hours, minutes);
+                        cr.set(year, month, day, hours, minutes);
                         tomato.setDeadline(cr.getTime());
-                        Intent intent = new Intent();
-                        Bundle bundle = new Bundle();
-                        bundle.putParcelable(MainActivity.PAR_KEY, tomato);
-                        intent.putExtras(bundle);
-                        setResult(RESULT_OK, intent);
-                        finish();
-                    }
-                    else
-                        tomato_save.setProgress(-1);
-                }
-                else
+                        mHandler .postDelayed(mRunnable, 2000); // 在Handler中执行子线程并延迟3s。
+                    } else
+                        simulateErrorProgress(tomato_save);
+                } else
                     tomato_save.setProgress(0);
             }
         });
@@ -206,11 +225,14 @@ public class EditActivity extends AppCompatActivity implements com.fourmob.datet
         day = calendar.get(Calendar.DAY_OF_MONTH);
         hours = calendar.get(Calendar.HOUR_OF_DAY);
         minutes = calendar.get(Calendar.MINUTE);
-
+        String tpstr = "";
+        if(minutes<10)
+            tpstr = "0";
         tomato_deadline.setText(String.valueOf(year) + "-" + String.valueOf(month+1) + "-" + String.valueOf(day));
-        tomato_deadline2.setText(String.valueOf(hours) + ":" + String.valueOf(minutes));
+        tomato_deadline2.setText(String.valueOf(hours) + ":" + tpstr + String.valueOf(minutes));
         datePickerDialog = com.fourmob.datetimepicker.date.DatePickerDialog.newInstance(this, year, month, day, false);
         timePickerDialog = com.sleepbot.datetimepicker.time.TimePickerDialog.newInstance(this, hours, minutes, false, false);
+        datePickerDialog.setYearRange(tomatoTask.MIN_YEAR, tomatoTask.MAX_YEAR);
     }
 
     @Override
@@ -229,6 +251,39 @@ public class EditActivity extends AppCompatActivity implements com.fourmob.datet
         finish();
     }
 
+    //SaveButton Animation
+    private void simulateSuccessProgress(final CircularProgressButton button) {
+        ValueAnimator widthAnimation = ValueAnimator.ofInt(1, 100);
+        widthAnimation.setDuration(1500);
+        widthAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
+        widthAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                Integer value = (Integer) animation.getAnimatedValue();
+                button.setProgress(value);
+            }
+        });
+        widthAnimation.start();
+    }
+
+    private void simulateErrorProgress(final CircularProgressButton button) {
+        ValueAnimator widthAnimation = ValueAnimator.ofInt(1, 99);
+        widthAnimation.setDuration(1500);
+        widthAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
+        widthAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                Integer value = (Integer) animation.getAnimatedValue();
+                button.setProgress(value);
+                if (value == 99) {
+                    button.setProgress(-1);
+                }
+            }
+        });
+        widthAnimation.start();
+    }
+
+    //AboutDataSet
     @Override
     public void onDateSet(com.fourmob.datetimepicker.date.DatePickerDialog datePickerDialog, int year, int month, int day) {
         tomato_deadline.setText(String.valueOf(year)+"-"+String.valueOf(month+1)+"-"+String.valueOf(day));
@@ -242,6 +297,10 @@ public class EditActivity extends AppCompatActivity implements com.fourmob.datet
     public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute) {
         this.hours = hourOfDay;
         this.minutes = minute;
-        tomato_deadline2.setText(String.valueOf(hourOfDay) + ":" + String.valueOf(minute));
+        String tpstr = "";
+        if(minute<10)
+            tpstr = "0";
+        tomato_deadline2.setText(String.valueOf(hourOfDay) + ":" + tpstr + String.valueOf(minute));
     }
+
 }

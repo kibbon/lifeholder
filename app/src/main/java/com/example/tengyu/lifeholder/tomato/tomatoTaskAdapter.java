@@ -2,6 +2,7 @@ package com.example.tengyu.lifeholder.tomato;
 
 import android.content.Context;
 import android.os.Parcelable;
+import android.support.annotation.NonNull;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,8 +11,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import com.example.tengyu.lifeholder.R;
+import com.fourmob.datetimepicker.date.SimpleMonthAdapter;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -52,10 +56,12 @@ public class tomatoTaskAdapter extends ArrayAdapter<tomatoTask> {
         }
 
         //获取当前要显示的数据
-
         viewholder.titles.setText(tomato.getTitle());
+        Calendar cr = Calendar.getInstance();
+        Calendar ct = Calendar.getInstance();
+        cr.setTime(tomato.getDeadline());
         viewholder.subtitles.setText(dateFormat.format(tomato.getDeadline()));
-        Log.d("SetTextView",tomato.getTitle());
+        Log.d("SetTextView", tomato.getTitle());
         switch (tomato.getTomato()) {
             case 1:
                 viewholder.tomato.setImageResource(R.drawable.stomato_1);

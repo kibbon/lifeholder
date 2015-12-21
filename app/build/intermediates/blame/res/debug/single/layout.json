@@ -12,6 +12,10 @@
         "source": "E:\\KC\\Yuri\\workroom\\Android programing\\LifeHolder\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\abc_search_view.xml"
     },
     {
+        "merged": "E:\\KC\\Yuri\\workroom\\lifeholder\\app\\build\\intermediates\\res\\merged\\debug\\layout\\dialog_layout.xml",
+        "source": "E:\\KC\\Yuri\\workroom\\lifeholder\\app\\build\\intermediates\\exploded-aar\\com.github.sd6352051.niftydialogeffects\\niftydialogeffects\\1.0.0\\res\\layout\\dialog_layout.xml"
+    },
+    {
         "merged": "E:\\KC\\Yuri\\workroom\\lifeholder\\app\\build\\intermediates\\res\\merged\\debug\\layout\\timezonepickerview.xml",
         "source": "E:\\KC\\Yuri\\workroom\\lifeholder\\app\\build\\intermediates\\exploded-aar\\com.code-troopers.betterpickers\\library\\2.2.2\\res\\layout\\timezonepickerview.xml"
     },
@@ -518,6 +522,10 @@
     {
         "merged": "E:\\KC\\Yuri\\workroom\\lifeholder\\app\\build\\intermediates\\res\\merged\\debug\\layout\\time_header_label.xml",
         "source": "E:\\KC\\Yuri\\workroom\\lifeholder\\app\\build\\intermediates\\exploded-aar\\lifeholder\\lib_dateTimePicker\\unspecified\\res\\layout\\time_header_label.xml"
+    },
+    {
+        "merged": "E:\\KC\\Yuri\\workroom\\lifeholder\\app\\build\\intermediates\\res\\merged\\debug\\layout\\undo_row.xml",
+        "source": "E:\\KC\\Yuri\\workroom\\lifeholder\\app\\src\\main\\res\\layout\\undo_row.xml"
     },
     {
         "merged": "E:\\KC\\Yuri\\workroom\\lifeholder\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_button_bar_material.xml",

@@ -10,7 +10,10 @@ import java.util.List;
 /**
  * Created by tengyu on 2015/12/18.
  */
+
+
 public class tomatoIO {
+
     public static List<tomatoTask> testTomatoes(){
         List<tomatoTask> tomatoList = new ArrayList<tomatoTask>();
         tomatoTask tomato1 = new tomatoTask("软件工程前端开发",7,new Date(2015-1900,11,22));
@@ -21,7 +24,7 @@ public class tomatoIO {
         tomatoList.add(tomato3);
         tomatoTask tomato4 = new tomatoTask("数学建模工作",6,new Date(2015-1900,11,25));
         tomatoList.add(tomato4);
-        tomatoTask tomato5 = new tomatoTask("锻炼身体",2,new Date(2095-1900,11,31));
+        tomatoTask tomato5 = new tomatoTask("锻炼身体",2,new Date(2036-1900,11,31));
         tomatoList.add(tomato5);
         tomatoTask tomato6 = new tomatoTask("用户界面设计",6,new Date(2015-1900,11,19));
         tomatoList.add(tomato6);

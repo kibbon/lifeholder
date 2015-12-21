@@ -18,6 +18,9 @@ public class tomatoTask  implements Parcelable {
         private Date time;
         private Date deadline;
 
+        public static int MAX_YEAR = 2036;
+        public static int MIN_YEAR = 1970;
+
     public tomatoTask(String title,int tomato, Date time,int lev,boolean ifRemind){
         this.title = new String(title);
         this.tomato = tomato;

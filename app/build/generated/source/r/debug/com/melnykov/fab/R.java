@@ -16,18 +16,18 @@ public final class R {
 		public static final int fab_type = 0x7f010068;
 	}
 	public static final class color {
-		public static final int material_blue_500 = 0x7f0b0055;
+		public static final int material_blue_500 = 0x7f0b0059;
 	}
 	public static final class dimen {
-		public static final int fab_elevation_lollipop = 0x7f080087;
-		public static final int fab_scroll_threshold = 0x7f080089;
-		public static final int fab_shadow_size = 0x7f08008a;
-		public static final int fab_size_mini = 0x7f08008b;
-		public static final int fab_size_normal = 0x7f08008c;
+		public static final int fab_elevation_lollipop = 0x7f080088;
+		public static final int fab_scroll_threshold = 0x7f08008a;
+		public static final int fab_shadow_size = 0x7f08008b;
+		public static final int fab_size_mini = 0x7f08008c;
+		public static final int fab_size_normal = 0x7f08008d;
 	}
 	public static final class drawable {
-		public static final int fab_shadow = 0x7f020053;
-		public static final int fab_shadow_mini = 0x7f020054;
+		public static final int fab_shadow = 0x7f020057;
+		public static final int fab_shadow_mini = 0x7f020058;
 	}
 	public static final class id {
 		public static final int mini = 0x7f0c0038;

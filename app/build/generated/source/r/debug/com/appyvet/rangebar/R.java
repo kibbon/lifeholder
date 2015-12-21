@@ -30,8 +30,8 @@ public final class R {
 		public static final int tickStart = 0x7f010081;
 	}
 	public static final class drawable {
-		public static final int rotate = 0x7f02006e;
-		public static final int roundrect = 0x7f02006f;
+		public static final int rotate = 0x7f020070;
+		public static final int roundrect = 0x7f020071;
 	}
 	public static final class string {
 		public static final int app_name = 0x7f060047;
