@@ -8,9 +8,9 @@ package com.google.android.gms;
 
 public final class R {
 	public static final class attr {
-		public static final int circleCrop = 0x7f010073;
-		public static final int imageAspectRatio = 0x7f010072;
-		public static final int imageAspectRatioAdjust = 0x7f010071;
+		public static final int circleCrop = 0x7f010096;
+		public static final int imageAspectRatio = 0x7f010095;
+		public static final int imageAspectRatioAdjust = 0x7f010094;
 	}
 	public static final class color {
 		public static final int common_action_bar_splitter = 0x7f0b0025;
@@ -43,8 +43,8 @@ public final class R {
 	public static final class raw {
 	}
 	public static final class string {
-		public static final int auth_google_play_services_client_facebook_display_name = 0x7f060049;
-		public static final int auth_google_play_services_client_google_display_name = 0x7f06004a;
+		public static final int auth_google_play_services_client_facebook_display_name = 0x7f06004c;
+		public static final int auth_google_play_services_client_google_display_name = 0x7f06004d;
 		public static final int common_android_wear_notification_needs_update_text = 0x7f060013;
 		public static final int common_android_wear_update_text = 0x7f060014;
 		public static final int common_android_wear_update_title = 0x7f060015;
@@ -79,7 +79,7 @@ public final class R {
 	public static final class style {
 	}
 	public static final class styleable {
-		public static final int[] LoadingImageView = { 0x7f010071, 0x7f010072, 0x7f010073 };
+		public static final int[] LoadingImageView = { 0x7f010094, 0x7f010095, 0x7f010096 };
 		public static final int LoadingImageView_circleCrop = 2;
 		public static final int LoadingImageView_imageAspectRatio = 1;
 		public static final int LoadingImageView_imageAspectRatioAdjust = 0;

@@ -43,16 +43,16 @@ public final class R {
 		public static final int cpb_background = 0x7f02004c;
 	}
 	public static final class string {
-		public static final int define_circularprogressbutton = 0x7f06004f;
-		public static final int library_circularprogressbutton_author = 0x7f06005b;
-		public static final int library_circularprogressbutton_authorWebsite = 0x7f06005c;
-		public static final int library_circularprogressbutton_isOpenSource = 0x7f06005d;
-		public static final int library_circularprogressbutton_libraryDescription = 0x7f06005e;
-		public static final int library_circularprogressbutton_libraryName = 0x7f06005f;
-		public static final int library_circularprogressbutton_libraryVersion = 0x7f060060;
-		public static final int library_circularprogressbutton_libraryWebsite = 0x7f060061;
-		public static final int library_circularprogressbutton_licenseId = 0x7f060062;
-		public static final int library_circularprogressbutton_repositoryLink = 0x7f060063;
+		public static final int define_circularprogressbutton = 0x7f060052;
+		public static final int library_circularprogressbutton_author = 0x7f060061;
+		public static final int library_circularprogressbutton_authorWebsite = 0x7f060062;
+		public static final int library_circularprogressbutton_isOpenSource = 0x7f060063;
+		public static final int library_circularprogressbutton_libraryDescription = 0x7f060064;
+		public static final int library_circularprogressbutton_libraryName = 0x7f060065;
+		public static final int library_circularprogressbutton_libraryVersion = 0x7f060066;
+		public static final int library_circularprogressbutton_libraryWebsite = 0x7f060067;
+		public static final int library_circularprogressbutton_licenseId = 0x7f060068;
+		public static final int library_circularprogressbutton_repositoryLink = 0x7f060069;
 	}
 	public static final class styleable {
 		public static final int[] CircularProgressButton = { 0x7f010036, 0x7f010037, 0x7f010038, 0x7f010039, 0x7f01003a, 0x7f01003b, 0x7f01003c, 0x7f01003d, 0x7f01003e, 0x7f01003f, 0x7f010040, 0x7f010041, 0x7f010042, 0x7f010043 };

@@ -10,7 +10,6 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
-            android:launchMode="singleTask"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -34,8 +33,24 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="MainActivity" />
+
             <intent-filter>
-                <action android:name="com.example.tengyu.lifeholder.ACTION_EDIT"/>
+                <action android:name="com.example.tengyu.lifeholder.ACTION_EDIT" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".CountActivity"
+            android:label="@string/title_activity_count"
+            android:launchMode="singleTask"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="MainActivity" />
+
+            <intent-filter>
+                <action android:name="com.example.tengyu.lifeholder.ACTION_COUNT" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

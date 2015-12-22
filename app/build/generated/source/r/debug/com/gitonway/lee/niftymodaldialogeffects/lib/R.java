@@ -26,26 +26,26 @@ public final class R {
 	}
 	public static final class id {
 		public static final int alertTitle = 0x7f0c0054;
-		public static final int button1 = 0x7f0c0091;
-		public static final int button2 = 0x7f0c0092;
+		public static final int button1 = 0x7f0c0096;
+		public static final int button2 = 0x7f0c0097;
 		public static final int contentPanel = 0x7f0c0055;
 		public static final int customPanel = 0x7f0c005a;
 		public static final int icon = 0x7f0c004d;
-		public static final int main = 0x7f0c008e;
-		public static final int message = 0x7f0c0090;
+		public static final int main = 0x7f0c0093;
+		public static final int message = 0x7f0c0095;
 		public static final int parentPanel = 0x7f0c0051;
-		public static final int titleDivider = 0x7f0c008f;
+		public static final int titleDivider = 0x7f0c0094;
 		public static final int title_template = 0x7f0c0053;
 		public static final int topPanel = 0x7f0c0052;
 	}
 	public static final class layout {
-		public static final int dialog_layout = 0x7f04002d;
+		public static final int dialog_layout = 0x7f04002f;
 	}
 	public static final class style {
 		public static final int AppBaseTheme = 0x7f090005;
 		public static final int DialogWindowTitle = 0x7f0900ba;
-		public static final int dialog_btn = 0x7f090155;
-		public static final int dialog_tran = 0x7f090156;
-		public static final int dialog_untran = 0x7f090157;
+		public static final int dialog_btn = 0x7f090157;
+		public static final int dialog_tran = 0x7f090158;
+		public static final int dialog_untran = 0x7f090159;
 	}
 }

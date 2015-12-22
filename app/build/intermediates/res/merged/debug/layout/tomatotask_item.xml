@@ -25,6 +25,9 @@
 
         <TextView
             android:id="@+id/tomatotask_title"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:marqueeRepeatLimit="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?attr/titleTextAppearance"
@@ -39,4 +42,12 @@
             android:textColor="#888888"
             android:textSize="16sp" />
     </RelativeLayout>
+    <TextView
+        android:id="@+id/tomatotask_leftTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:layout_marginTop="4dp"
+        android:textColor="#888888"
+        android:textSize="16sp" />
 </LinearLayout>

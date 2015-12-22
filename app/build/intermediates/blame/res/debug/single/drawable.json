@@ -36,6 +36,10 @@
         "source": "E:\\KC\\Yuri\\workroom\\lifeholder\\app\\src\\main\\res\\drawable\\ios_thumb.png"
     },
     {
+        "merged": "E:\\KC\\Yuri\\workroom\\lifeholder\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_action_info.png",
+        "source": "E:\\KC\\Yuri\\workroom\\lifeholder\\app\\src\\main\\res\\drawable\\ic_action_info.png"
+    },
+    {
         "merged": "E:\\KC\\Yuri\\workroom\\lifeholder\\app\\build\\intermediates\\res\\merged\\debug\\drawable\\ic_action_cancel.png",
         "source": "E:\\KC\\Yuri\\workroom\\lifeholder\\app\\src\\main\\res\\drawable\\ic_action_cancel.png"
     },

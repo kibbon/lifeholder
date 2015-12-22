@@ -52,12 +52,12 @@
         "source": "E:\\KC\\Yuri\\workroom\\Android programing\\LifeHolder\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.1.1\\res\\layout\\design_navigation_item_subheader.xml"
     },
     {
-        "merged": "E:\\KC\\Yuri\\workroom\\Android programing\\LifeHolder\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_time.xml",
-        "source": "E:\\KC\\Yuri\\workroom\\Android programing\\LifeHolder\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\notification_template_part_time.xml"
-    },
-    {
         "merged": "E:\\KC\\Yuri\\workroom\\Android programing\\LifeHolder\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_menu_item.xml",
         "source": "E:\\KC\\Yuri\\workroom\\Android programing\\LifeHolder\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.1.1\\res\\layout\\design_navigation_menu_item.xml"
+    },
+    {
+        "merged": "E:\\KC\\Yuri\\workroom\\Android programing\\LifeHolder\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_time.xml",
+        "source": "E:\\KC\\Yuri\\workroom\\Android programing\\LifeHolder\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\notification_template_part_time.xml"
     },
     {
         "merged": "E:\\KC\\Yuri\\workroom\\lifeholder\\app\\build\\intermediates\\res\\merged\\debug\\layout\\calendar_date_picker_header_view.xml",
@@ -76,12 +76,12 @@
         "source": "E:\\KC\\Yuri\\workroom\\lifeholder\\app\\build\\intermediates\\exploded-aar\\com.android.support\\design\\23.1.1\\res\\layout\\design_layout_tab_icon.xml"
     },
     {
-        "merged": "E:\\KC\\Yuri\\workroom\\lifeholder\\app\\build\\intermediates\\res\\merged\\debug\\layout\\date_picker_view.xml",
-        "source": "E:\\KC\\Yuri\\workroom\\lifeholder\\app\\build\\intermediates\\exploded-aar\\com.code-troopers.betterpickers\\library\\2.2.2\\res\\layout\\date_picker_view.xml"
-    },
-    {
         "merged": "E:\\KC\\Yuri\\workroom\\lifeholder\\app\\build\\intermediates\\res\\merged\\debug\\layout\\content_edit.xml",
         "source": "E:\\KC\\Yuri\\workroom\\lifeholder\\app\\src\\main\\res\\layout\\content_edit.xml"
+    },
+    {
+        "merged": "E:\\KC\\Yuri\\workroom\\lifeholder\\app\\build\\intermediates\\res\\merged\\debug\\layout\\date_picker_view.xml",
+        "source": "E:\\KC\\Yuri\\workroom\\lifeholder\\app\\build\\intermediates\\exploded-aar\\com.code-troopers.betterpickers\\library\\2.2.2\\res\\layout\\date_picker_view.xml"
     },
     {
         "merged": "E:\\KC\\Yuri\\workroom\\Android programing\\LifeHolder\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_view_list_nav_layout.xml",
@@ -198,6 +198,10 @@
     {
         "merged": "E:\\KC\\Yuri\\workroom\\lifeholder\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_toolbar.xml",
         "source": "E:\\KC\\Yuri\\workroom\\lifeholder\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.1.1\\res\\layout\\abc_screen_toolbar.xml"
+    },
+    {
+        "merged": "E:\\KC\\Yuri\\workroom\\lifeholder\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_count.xml",
+        "source": "E:\\KC\\Yuri\\workroom\\lifeholder\\app\\src\\main\\res\\layout\\activity_count.xml"
     },
     {
         "merged": "E:\\KC\\Yuri\\workroom\\lifeholder\\app\\build\\intermediates\\res\\merged\\debug\\layout\\pickerview_time.xml",
@@ -470,6 +474,10 @@
     {
         "merged": "E:\\KC\\Yuri\\workroom\\lifeholder\\app\\build\\intermediates\\res\\merged\\debug\\layout\\recurrencepicker.xml",
         "source": "E:\\KC\\Yuri\\workroom\\lifeholder\\app\\build\\intermediates\\exploded-aar\\com.code-troopers.betterpickers\\library\\2.2.2\\res\\layout\\recurrencepicker.xml"
+    },
+    {
+        "merged": "E:\\KC\\Yuri\\workroom\\lifeholder\\app\\build\\intermediates\\res\\merged\\debug\\layout\\content_count.xml",
+        "source": "E:\\KC\\Yuri\\workroom\\lifeholder\\app\\src\\main\\res\\layout\\content_count.xml"
     },
     {
         "merged": "E:\\KC\\Yuri\\workroom\\Android programing\\LifeHolder\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_toolbar.xml",

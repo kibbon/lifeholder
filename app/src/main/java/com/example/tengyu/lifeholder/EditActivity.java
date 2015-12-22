@@ -11,13 +11,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
-import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -30,22 +26,24 @@ import com.appyvet.rangebar.RangeBar;
 import com.dd.CircularProgressButton;
 import com.example.tengyu.lifeholder.tomato.tomatoTask;
 import com.fourmob.datetimepicker.date.DatePickerDialog;
+import com.gitonway.lee.niftymodaldialogeffects.lib.Effectstype;
+import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder;
 import com.sleepbot.datetimepicker.time.RadialPickerLayout;
 import com.sleepbot.datetimepicker.time.TimePickerDialog;
 
 import java.util.Calendar;
-import java.util.Date;
-import java.text.SimpleDateFormat;
 
 public class EditActivity extends AppCompatActivity implements com.fourmob.datetimepicker.date.DatePickerDialog.OnDateSetListener, com.sleepbot.datetimepicker.time.TimePickerDialog.OnTimeSetListener {
     public static final String DATEPICKER_TAG = "datepicker";
     public static final String TIMEPICKER_TAG = "timepicker";
 
+    private Boolean ifEdit = false;
     private RangeBar tomato_rangebar;
     private TextView tomato_index;
     private TextView tomato_deadline;
     private TextView tomato_deadline2;
     private EditText tomato_title;
+    private NiftyDialogBuilder cancelWarning;
     private com.kyleduo.switchbutton.SwitchButton tomato_ifRemind;
     private tomatoTask tomato;
     private com.fourmob.datetimepicker.date.DatePickerDialog datePickerDialog;
@@ -95,12 +93,12 @@ public class EditActivity extends AppCompatActivity implements com.fourmob.datet
 
         //View Init
         tomato_index = (TextView) findViewById(R.id.tomatotask_edit_tomatoIndex);
-        tomato_title = (EditText) findViewById(R.id.tomatotask_edit_title);
         tomato_deadline = (TextView) findViewById(R.id.tomatotask_edit_deadline);
         tomato_deadline2 = (TextView) findViewById(R.id.tomatotask_edit_deadline2);
+        tomato_title = (EditText) findViewById(R.id.tomatotask_edit_title);
 
         //Get tomato send by Main Activity
-        tomato = (tomatoTask)getIntent().getParcelableExtra(MainActivity.PAR_KEY);
+        tomato = getIntent().getParcelableExtra(MainActivity.PAR_KEY);
 
         tomato_rangebar = (RangeBar) findViewById(R.id.tomatotask_edit_rangebar);
         tomato_rangebar.setOnRangeBarChangeListener(new RangeBar.OnRangeBarChangeListener() {
@@ -108,8 +106,29 @@ public class EditActivity extends AppCompatActivity implements com.fourmob.datet
             public void onRangeChangeListener(RangeBar rangeBar, int leftPinIndex,int rightPinIndex,String leftPinValue, String rightPinValue) {
                 tomato_index.setText(String.valueOf(rightPinIndex + 1));
                 tomato.setTomato(rightPinIndex + 1);
+                ifEdit = true;
             }
         });
+
+        cancelWarning = NiftyDialogBuilder.getInstance(this);
+
+        cancelWarning.setButton1Click(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cancelWarning.dismiss();//DO NOTHING
+                tomato_save.callOnClick();
+            }
+        });
+        cancelWarning.setButton2Click(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cancelWarning.dismiss();//DO NOTHING
+                Intent intent = new Intent();
+                setResult(RESULT_CANCELED,intent);
+                finish();
+            }
+        });
+        cancelWarning.setCancelable(true);
 
         //Init edit deadline button
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.tomatotask_edit_deadlinebtn);
@@ -139,6 +158,7 @@ public class EditActivity extends AppCompatActivity implements com.fourmob.datet
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 tomato.setIfRemind(isChecked);
+                ifEdit = true;
             }
         });
 
@@ -154,6 +174,7 @@ public class EditActivity extends AppCompatActivity implements com.fourmob.datet
                 } else {
                     tomato.setLev(1);
                 }
+                ifEdit = true;
             }
         });
 
@@ -169,8 +190,9 @@ public class EditActivity extends AppCompatActivity implements com.fourmob.datet
                         cr.set(year, month, day, hours, minutes);
                         tomato.setDeadline(cr.getTime());
                         mHandler .postDelayed(mRunnable, 2000); // 在Handler中执行子线程并延迟3s。
-                    } else
+                    } else{
                         simulateErrorProgress(tomato_save);
+                    }
                 } else
                     tomato_save.setProgress(0);
             }
@@ -180,25 +202,30 @@ public class EditActivity extends AppCompatActivity implements com.fourmob.datet
     @Override
     public void onStart(){
         super.onStart();
-        final Calendar calendar = Calendar.getInstance();
-        if(tomato.getTitle().equals("")) {
+        if(!tomato.getTitle().equals("")) {
+            tomato_title.setText(tomato.getTitle());
+            tomato_title.setFocusable(false);
+        }
+        else{
             tomato_title.addTextChangedListener(new TextWatcher(){
                 public void afterTextChanged(Editable s) {
                     tomato.setTitle(tomato_title.getText().toString());
+                    ifEdit = true;
                 }
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
                     tomato.setTitle(tomato_title.getText().toString());
+                    ifEdit = true;
                 }
                 public void beforeTextChanged(CharSequence s, int start, int before, int count) {
                     //TODO
                 }
             });
         }
-        else{
-            tomato_title.setText(tomato.getTitle());
-            tomato_title.setFocusable(false);
-            calendar.setTime(tomato.getDeadline());
-        }
+        if(!tomato.repOK()||tomato.getTomato()==0)
+            tomato_rangebar.setEnabled(false);
+
+        final Calendar calendar = Calendar.getInstance();
+        calendar.setTime(tomato.getDeadline());
 
         RadioButton tomato_lev_radio;
         switch(tomato.getLev()){
@@ -215,8 +242,10 @@ public class EditActivity extends AppCompatActivity implements com.fourmob.datet
                 tomato_lev_radio.setChecked(true);
                 break;
         }
-
-        tomato_rangebar.setRangePinsByIndices(0, tomato.getTomato() - 1);
+        if(tomato.getTomato()>0)
+            tomato_rangebar.setRangePinsByIndices(0, tomato.getTomato() - 1);
+        else
+            tomato_rangebar.setRangePinsByIndices(0, 0);
         tomato_index.setText(String.valueOf(tomato.getTomato()));
         tomato_ifRemind.setChecked(tomato.IfRemind());
 
@@ -233,6 +262,8 @@ public class EditActivity extends AppCompatActivity implements com.fourmob.datet
         datePickerDialog = com.fourmob.datetimepicker.date.DatePickerDialog.newInstance(this, year, month, day, false);
         timePickerDialog = com.sleepbot.datetimepicker.time.TimePickerDialog.newInstance(this, hours, minutes, false, false);
         datePickerDialog.setYearRange(tomatoTask.MIN_YEAR, tomatoTask.MAX_YEAR);
+
+        ifEdit = false;
     }
 
     @Override
@@ -246,9 +277,23 @@ public class EditActivity extends AppCompatActivity implements com.fourmob.datet
 
     @Override
     public void onBackPressed(){
-        Intent intent = new Intent();
-        setResult(RESULT_CANCELED, intent);
-        finish();
+        if(ifEdit) {
+            cancelWarning.withTitle("Uploading")
+                    .withMessage(" Save your changes ? ")             //.withMessage(null)  no Msg
+                    .withDialogColor(getResources().getColor(R.color.themeLight))
+                    .withDialogColor(getResources().getColor(R.color.theme))
+                    .withIcon(getResources().getDrawable(R.drawable.ic_action_info))
+                    .withDuration(600)                                          //def
+                    .withEffect(Effectstype.RotateBottom)                               //def Effectstype.Slidetop
+                    .withButton1Text("Yes")                                      //def gone
+                    .withButton2Text("No")                                  //def gone
+                    .isCancelableOnTouchOutside(true).show();
+        }
+        else{
+            Intent intent = new Intent();
+            setResult(RESULT_CANCELED,intent);
+            finish();
+        }
     }
 
     //SaveButton Animation
@@ -277,6 +322,7 @@ public class EditActivity extends AppCompatActivity implements com.fourmob.datet
                 button.setProgress(value);
                 if (value == 99) {
                     button.setProgress(-1);
+                    Toast.makeText(getApplicationContext(),"Check your title",Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -291,6 +337,7 @@ public class EditActivity extends AppCompatActivity implements com.fourmob.datet
         this.month = month;
         this.day = day;
         timePickerDialog.show(getSupportFragmentManager(), TIMEPICKER_TAG);
+        ifEdit = true;
     }
 
     @Override
@@ -301,6 +348,7 @@ public class EditActivity extends AppCompatActivity implements com.fourmob.datet
         if(minute<10)
             tpstr = "0";
         tomato_deadline2.setText(String.valueOf(hourOfDay) + ":" + tpstr + String.valueOf(minute));
+        ifEdit = true;
     }
 
 }

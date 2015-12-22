@@ -160,6 +160,7 @@
     <declare-styleable name="CompoundButton"><attr name="android:button"/><attr format="color" name="buttonTint"/><attr name="buttonTintMode"><enum name="src_over" value="3"/><enum name="src_in" value="5"/><enum name="src_atop" value="9"/><enum name="multiply" value="14"/><enum name="screen" value="15"/></attr></declare-styleable>
     <declare-styleable name="CoordinatorLayout"><attr format="reference" name="keylines"/><attr format="reference" name="statusBarBackground"/></declare-styleable>
     <declare-styleable name="CoordinatorLayout_LayoutParams"><attr name="android:layout_gravity"/><attr format="string" name="layout_behavior"/><attr format="reference" name="layout_anchor"/><attr format="integer" name="layout_keyline"/><attr name="layout_anchorGravity"><flag name="top" value="0x30"/><flag name="bottom" value="0x50"/><flag name="left" value="0x03"/><flag name="right" value="0x05"/><flag name="center_vertical" value="0x10"/><flag name="fill_vertical" value="0x70"/><flag name="center_horizontal" value="0x01"/><flag name="fill_horizontal" value="0x07"/><flag name="center" value="0x11"/><flag name="fill" value="0x77"/><flag name="clip_vertical" value="0x80"/><flag name="clip_horizontal" value="0x08"/><flag name="start" value="0x00800003"/><flag name="end" value="0x00800005"/></attr></declare-styleable>
+    <declare-styleable name="CountdownView"><attr format="boolean" name="isHideTimeBackground"/><attr format="boolean" name="isShowTimeBgDivisionLine"/><attr format="color" name="timeBgDivisionLineColor"/><attr format="dimension" name="timeBgDivisionLineSize"/><attr format="color" name="timeBgColor"/><attr format="dimension" name="timeBgSize"/><attr format="dimension" name="timeBgRadius"/><attr format="boolean" name="isTimeTextBold"/><attr format="dimension" name="timeTextSize"/><attr format="color" name="timeTextColor"/><attr format="boolean" name="isShowDay"/><attr format="boolean" name="isShowHour"/><attr format="boolean" name="isShowMinute"/><attr format="boolean" name="isShowSecond"/><attr format="boolean" name="isShowMillisecond"/><attr format="boolean" name="isSuffixTextBold"/><attr format="dimension" name="suffixTextSize"/><attr format="color" name="suffixTextColor"/><attr format="string" name="suffix"/><attr format="string" name="suffixDay"/><attr format="string" name="suffixHour"/><attr format="string" name="suffixMinute"/><attr format="string" name="suffixSecond"/><attr format="string" name="suffixMillisecond"/><attr name="suffixGravity"><enum name="top" value="0"/><enum name="center" value="1"/><enum name="bottom" value="2"/></attr><attr format="dimension" name="suffixLRMargin"/><attr format="dimension" name="suffixDayLeftMargin"/><attr format="dimension" name="suffixDayRightMargin"/><attr format="dimension" name="suffixHourLeftMargin"/><attr format="dimension" name="suffixHourRightMargin"/><attr format="dimension" name="suffixMinuteLeftMargin"/><attr format="dimension" name="suffixMinuteRightMargin"/><attr format="dimension" name="suffixSecondLeftMargin"/><attr format="dimension" name="suffixSecondRightMargin"/><attr format="dimension" name="suffixMillisecondLeftMargin"/></declare-styleable>
     <declare-styleable name="DrawerArrowToggle"><attr format="color" name="color"/><attr format="boolean" name="spinBars"/><attr format="dimension" name="drawableSize"/><attr format="dimension" name="gapBetweenBars"/><attr format="dimension" name="arrowHeadLength"/><attr format="dimension" name="arrowShaftLength"/><attr format="dimension" name="barLength"/><attr format="dimension" name="thickness"/></declare-styleable>
     <declare-styleable name="FloatingActionButton"><attr format="color" name="fab_colorPressed"/><attr format="color" name="fab_colorNormal"/><attr format="color" name="fab_colorRipple"/><attr format="color" name="fab_colorDisabled"/><attr format="boolean" name="fab_shadow"/><attr format="enum" name="fab_type"><enum name="normal" value="0"/><enum name="mini" value="1"/></attr><attr name="backgroundTint"/><attr name="backgroundTintMode"/><attr format="color" name="rippleColor"/><attr name="fabSize"><enum name="normal" value="0"/><enum name="mini" value="1"/></attr><attr name="elevation"/><attr format="dimension" name="pressedTranslationZ"/><attr format="dimension" name="borderWidth"/></declare-styleable>
     <declare-styleable name="ForegroundLinearLayout"><attr name="android:foreground"/><attr name="android:foregroundGravity"/><attr format="boolean" name="foregroundInsidePadding"/></declare-styleable>
@@ -303,6 +304,7 @@
     <item format="float" name="disabled_alpha_material_dark" type="dimen">0.30</item>
     <item format="float" name="disabled_alpha_material_light" type="dimen">0.26</item>
     <dimen name="done_label_size">14sp</dimen>
+    <dimen name="drawable_ring_size">4dip</dimen>
     <dimen name="extra_time_label_margin">-30dp</dimen>
     <dimen name="fab_elevation_lollipop">8dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
@@ -388,6 +390,9 @@
     <string name="abc_shareactionprovider_share_with">Share with</string>
     <string name="abc_shareactionprovider_share_with_application">Share with %s</string>
     <string name="abc_toolbar_collapse_description">Collapse</string>
+    <string name="action_Fight">JUST DO IT!</string>
+    <string name="action_Fighting">Fighting!</string>
+    <string name="action_count_task">Tomato Task</string>
     <string name="action_edit_max_tomato">7×25min</string>
     <string name="action_edit_min_tomato">1×25min</string>
     <string name="action_edit_task">Task Edit</string>
@@ -442,8 +447,11 @@
     <string name="done_label">Done</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="hello">Hello circular-progress-drawable!</string>
+    <string name="hello_world">Hello world!</string>
     <string name="hour_picker_description">Hours circular slider</string>
     <string name="item_is_selected">%1$s selected</string>
+    <string name="lib_name">circular-progress-drawable</string>
     <string name="library_FloatingActionButton_author">Oleksandr Melnykov</string>
     <string name="library_FloatingActionButton_authorWebsite">https://github.com/makovkastar/FloatingActionButton</string>
     <string name="library_FloatingActionButton_isOpenSource">true</string>
@@ -481,7 +489,10 @@
     <item format="float" name="text_size_multiplier_outer" type="string">0.11</item>
     <string name="time_placeholder" translatable="false">--</string>
     <string name="time_separator" translatable="false">:</string>
+    <string name="title_activity_count">CountActivity</string>
     <string name="title_activity_edit">EditActivity</string>
+    <string name="title_activity_fullscreen">FullscreenActivity</string>
+    <string name="title_activity_top">TopActivity</string>
     <string name="year_picker_description">Year list</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>
@@ -1472,6 +1483,16 @@
     <style name="DialogWindowTitle">
         <item name="android:textSize">22sp</item>
         <item name="android:textColor">@color/text_color</item>
+    </style>
+    <style name="FullscreenActionBarStyle" parent="Widget.AppCompat.ActionBar">
+        <item name="android:background">@color/black_overlay</item>
+    </style>
+    <style name="FullscreenTheme" parent="AppTheme">
+        <item name="android:actionBarStyle">@style/FullscreenActionBarStyle</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:windowBackground">@null</item>
+        <item name="metaButtonBarStyle">?android:attr/buttonBarStyle</item>
+        <item name="metaButtonBarButtonStyle">?android:attr/buttonBarButtonStyle</item>
     </style>
     <style name="Platform.AppCompat" parent="android:Theme">
         <item name="android:windowNoTitle">true</item>

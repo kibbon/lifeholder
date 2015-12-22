@@ -34,8 +34,8 @@ public class tomatoTaskAdapter extends ArrayAdapter<tomatoTask> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent){
         tomatoTask tomato = getItem(position);
-        View view = null;
-        ViewHolder viewholder = null;
+        View view;
+        ViewHolder viewholder;
         DateFormat dateFormat = SimpleDateFormat.getDateInstance(DateFormat.DEFAULT, Locale.ENGLISH);
 
         if(convertView==null){
@@ -44,6 +44,7 @@ public class tomatoTaskAdapter extends ArrayAdapter<tomatoTask> {
             //查找每个ViewItem中,各个子View,放进holder中
             viewholder.titles = (TextView) view.findViewById(R.id.tomatotask_title);
             viewholder.subtitles = (TextView) view.findViewById(R.id.tomatotask_subtitle);
+            viewholder.leftTime = (TextView) view.findViewById(R.id.tomatotask_leftTime);
             viewholder.tomato = (ImageView) view.findViewById(R.id.tomatotask_image);
             //保存对每个显示的ViewItem中, 各个子View的引用对象
             view.setTag(viewholder);
@@ -55,13 +56,40 @@ public class tomatoTaskAdapter extends ArrayAdapter<tomatoTask> {
             viewholder = (ViewHolder)view.getTag();
         }
 
+
         //获取当前要显示的数据
         viewholder.titles.setText(tomato.getTitle());
-        Calendar cr = Calendar.getInstance();
-        Calendar ct = Calendar.getInstance();
-        cr.setTime(tomato.getDeadline());
-        viewholder.subtitles.setText(dateFormat.format(tomato.getDeadline()));
-        Log.d("SetTextView", tomato.getTitle());
+        viewholder.subtitles.setText(dateFormat.format(tomato.getDate()));
+        long time = (tomato.getDeadline().getTime()-(new Date()).getTime())/60000;
+
+        if(time>=0){
+            if(tomato.getTomato()==0)
+                viewholder.leftTime.setText("success");
+            else if(time<60){
+                if(time==0)
+                    viewholder.leftTime.setText("< 1 minute");
+                else
+                    viewholder.leftTime.setText("< "+(time+1)+" minutes");
+            }
+            else if(time<1440){
+                 viewholder.leftTime.setText("< "+(time/60+1)+" hours");
+            }
+            else if(time<44640){
+                viewholder.leftTime.setText("< "+(time/1440+1)+" days");
+            }
+            else if(time<527040){
+                viewholder.leftTime.setText("< "+(time/44640+1)+" months");
+            }
+            else
+                viewholder.leftTime.setText("> 1 year");
+        }
+        else{
+            if(tomato.getTomato()==0)
+                viewholder.leftTime.setText("success");
+            else
+                viewholder.leftTime.setText("failed");
+        }
+       // Log.d("SetTextView", tomato.getTitle());
         switch (tomato.getTomato()) {
             case 1:
                 viewholder.tomato.setImageResource(R.drawable.stomato_1);
@@ -95,6 +123,7 @@ public class tomatoTaskAdapter extends ArrayAdapter<tomatoTask> {
     {
         TextView titles;
         TextView subtitles;
+        TextView leftTime;
         ImageView tomato;
     }
 }

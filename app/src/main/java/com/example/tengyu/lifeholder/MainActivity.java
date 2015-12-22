@@ -7,16 +7,13 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
+import android.widget.AdapterView;
 import android.widget.Toast;
 
 import com.baoyz.swipemenulistview.SwipeMenu;
@@ -40,11 +37,12 @@ public class MainActivity extends AppCompatActivity {
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
     public final static String PAR_KEY = "com.andy.par";
-    public static final int ANIMATION_DURATION = 200;
+
     private boolean ifIflate;
-    private int selectPostion;
+    private int selectPosition;
+    private String titles;
     private GoogleApiClient client;
-    private List<tomatoTask> tomatoList;
+    private tomatoIO tomatoMod;
     private SwipeMenuListView listView;
     private ScaleInAnimationAdapter animationAdapter;
     private NiftyDialogBuilder deleteWarning;
@@ -53,16 +51,32 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        tomatoList = tomatoIO.testTomatoes();
-        listView = (SwipeMenuListView) findViewById(R.id.tomatotask_list_view);
-        ifIflate = true;
-        deleteWarning = NiftyDialogBuilder.getInstance(this);
 
+        tomatoMod = new tomatoIO(getSharedPreferences("tomato_data",MODE_PRIVATE));
+        tomatoMod.flush();
+
+        listView = (SwipeMenuListView) findViewById(R.id.tomatotask_list_view);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position,
+                                    long id) {
+                view.setSelected(true);
+                if(tomatoMod.get(position).repOK()){
+                    Intent intent = new Intent("com.example.tengyu.lifeholder.ACTION_COUNT");
+                    intent.putExtra("TITLE", tomatoMod.get(position).getTitle());
+                    startActivityForResult(intent, position + 1);
+                }
+            }
+        });
+        ifIflate = true;
+
+        deleteWarning = NiftyDialogBuilder.getInstance(this);
         deleteWarning.setButton1Click(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 deleteWarning.dismiss();
-                tomatoList.remove(selectPostion);
+                tomatoMod.remove(selectPosition);
                 flush();
                 Toast.makeText(getApplicationContext(), "Task deleted!", Toast.LENGTH_SHORT).show();
             }
@@ -114,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
                     case 0:
                         Intent intent = new Intent("com.example.tengyu.lifeholder.ACTION_EDIT");
                         Bundle bundle = new Bundle();
-                        tomatoTask tomatoTp = tomatoList.get(position);
+                        tomatoTask tomatoTp = tomatoMod.get(position);
                         bundle.putParcelable(PAR_KEY, tomatoTp);
                         intent.putExtras(bundle);
                         startActivityForResult(intent,position+1);
@@ -130,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
                                 .withButton1Text("OK")                                      //def gone
                                 .withButton2Text("Cancel")                                  //def gone
                                 .isCancelableOnTouchOutside(true)   .show();
-                        selectPostion = position;
+                        selectPosition = position;
                         break;
                     default:
                         break;
@@ -145,18 +159,27 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Intent intent = new Intent("com.example.tengyu.lifeholder.ACTION_EDIT");
                 Bundle bundle = new Bundle();
                 tomatoTask tomatoTp = new tomatoTask();
                 bundle.putParcelable(PAR_KEY, tomatoTp);
                 intent.putExtras(bundle);
                 startActivityForResult(intent,0);
-                //Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG) .setAction("Action", null).show();
             }
         });
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
-       client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+
+        if(savedInstanceState != null){
+            titles  = savedInstanceState.getString("TITLE");
+            if(titles!=null){
+                Intent intent = new Intent("com.example.tengyu.lifeholder.ACTION_COUNT");
+                intent.putExtra("TITLE",String.valueOf(titles));
+                startActivity(intent);
+            }
+        }
+        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
 
@@ -200,13 +223,14 @@ public class MainActivity extends AppCompatActivity {
                 // TODO: Make sure this auto-generated app deep link URI is correct.
                 Uri.parse("android-app://com.example.tengyu.lifeholder/http/host/path")
         );
+
         AppIndex.AppIndexApi.start(client, viewAction);
     }
 
     @Override
     public void onStop() {
         super.onStop();
-
+        tomatoMod.save();
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         Action viewAction = Action.newAction(
@@ -224,7 +248,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void flush(){
-        animationAdapter = new ScaleInAnimationAdapter(new tomatoTaskAdapter(MainActivity.this,  R.layout.tomatotask_item, tomatoList));
+        animationAdapter = new ScaleInAnimationAdapter(new tomatoTaskAdapter(MainActivity.this,  R.layout.tomatotask_item, tomatoMod.getList()));
         animationAdapter.setAbsListView(listView);
         listView.setAdapter(animationAdapter);
         ifIflate = false;
@@ -236,21 +260,33 @@ public class MainActivity extends AppCompatActivity {
             case 0:
                 if(resultCode == RESULT_OK){
                     tomatoTask tomatoTp = data.getParcelableExtra(MainActivity.PAR_KEY);
-                    tomatoList.add(tomatoTp);
-                    Toast.makeText(this,"New task joined!",Toast.LENGTH_SHORT).show();
+                    tomatoMod.insert(tomatoTp);
+                    Toast.makeText(this, "New task joined!", Toast.LENGTH_SHORT).show();
                     ifIflate = true;
                 }
                 break;
             default:
                 if(resultCode == RESULT_OK) {
                     tomatoTask tomatoTp = data.getParcelableExtra(MainActivity.PAR_KEY);
-                    tomatoTp.setDate(tomatoList.get(requestCode - 1).getDate());
-                    tomatoList.set(requestCode - 1, tomatoTp);
+                    tomatoTp.setDate(tomatoMod.get(requestCode - 1).getDate());
+                    tomatoMod.set(requestCode - 1, tomatoTp);
                     Toast.makeText(this,"Task list updated!",Toast.LENGTH_SHORT).show();
+                    ifIflate = true;
+                }
+                else if(resultCode == RESULT_FIRST_USER) {
+                    Toast.makeText(this,"Task list updated!",Toast.LENGTH_SHORT).show();
+                    tomatoMod.tomato(requestCode - 1);
                     ifIflate = true;
                 }
                 break;
         }
+    }
+
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState){
+        super.onSaveInstanceState(outState);
+        outState.putString("TITLE", titles);
     }
 
     private int dp2px(int dp) {
