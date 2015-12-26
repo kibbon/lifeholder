@@ -126,8 +126,10 @@ public class CountActivity extends AppCompatActivity {
         if(savedInstanceState != null){
             //stime = savedInstanceState.getLong("TIME_REMAIN");
             stime = savedInstanceState.getLong("TIME_GOAL") - (new Date()).getTime();
-            if(stime<=0)
-                tomato_fight.setProgress(100);
+            if(stime<=0){
+                tomato_fight.setProgress(0);
+                simulateSuccessProgress(tomato_fight);
+            }
             else
                 prepareStyle1Animation().start();
         }
