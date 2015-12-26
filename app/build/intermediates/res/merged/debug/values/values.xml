@@ -393,12 +393,22 @@
     <string name="action_Fight">JUST DO IT!</string>
     <string name="action_Fighting">Fighting!</string>
     <string name="action_count_task">Tomato Task</string>
+    <string name="action_edit_deadline">DEADLINE</string>
+    <string name="action_edit_general">GENERAL</string>
+    <string name="action_edit_general_priority">Priority: </string>
+    <string name="action_edit_general_priority1">1</string>
+    <string name="action_edit_general_priority2">2</string>
+    <string name="action_edit_general_priority3">3</string>
+    <string name="action_edit_general_remind">Vibrator remind</string>
+    <string name="action_edit_general_title">Title:</string>
+    <string name="action_edit_general_titleHint">  type description here</string>
     <string name="action_edit_max_tomato">7×25min</string>
     <string name="action_edit_min_tomato">1×25min</string>
     <string name="action_edit_task">Task Edit</string>
     <string name="action_edit_title">Task Title</string>
-    <string name="action_edit_title_deadline">Till when?</string>
     <string name="action_edit_title_time">SelectTime</string>
+    <string name="action_edit_tomato1">TOMAT</string>
+    <string name="action_edit_tomato2">ES: </string>
     <string name="action_save">Save</string>
     <string name="action_settings">Settings</string>
     <item format="float" name="ampm_circle_radius_multiplier" type="string">0.19</item>
@@ -470,6 +480,16 @@
     <string name="library_circularprogressbutton_libraryWebsite">http://dmytrodanylyk.com/pages/portfolio/circular-progress-button.html</string>
     <string name="library_circularprogressbutton_licenseId">mit</string>
     <string name="library_circularprogressbutton_repositoryLink">https://github.com/dmytrodanylyk/circular-progress-button</string>
+    <string name="message_cancel">CANCEL</string>
+    <string name="message_content_leave">Are you sure to leave ?</string>
+    <string name="message_content_remove">Confirm to remove ?</string>
+    <string name="message_content_upload">Save your changes ?</string>
+    <string name="message_no">No</string>
+    <string name="message_ok">OK</string>
+    <string name="message_save">save</string>
+    <string name="message_title_upload">Upload</string>
+    <string name="message_title_warning">Warning</string>
+    <string name="message_yes">Yes</string>
     <string name="minute_picker_description">Minutes circular slider</string>
     <item format="float" name="numbers_radius_multiplier_inner" type="string">0.60</item>
     <item format="float" name="numbers_radius_multiplier_normal" type="string">0.81</item>
@@ -491,7 +511,6 @@
     <string name="time_separator" translatable="false">:</string>
     <string name="title_activity_count">CountActivity</string>
     <string name="title_activity_edit">EditActivity</string>
-    <string name="title_activity_fullscreen">FullscreenActivity</string>
     <string name="title_activity_top">TopActivity</string>
     <string name="year_picker_description">Year list</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>

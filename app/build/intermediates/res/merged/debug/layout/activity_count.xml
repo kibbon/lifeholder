@@ -43,7 +43,6 @@
          <TextView
                 android:id="@+id/tomatotask_count_title"
                 android:padding="16dp"
-                android:text="TITLE"
                 android:singleLine="true"
                 android:ellipsize="marquee"
                 android:scrollHorizontally="true"

@@ -8,7 +8,7 @@ package com.sefford;
 
 public final class R {
 	public static final class string {
-		public static final int hello = 0x7f060055;
-		public static final int lib_name = 0x7f060057;
+		public static final int hello = 0x7f06005f;
+		public static final int lib_name = 0x7f060061;
 	}
 }

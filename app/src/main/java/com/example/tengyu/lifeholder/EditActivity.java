@@ -101,14 +101,6 @@ public class EditActivity extends AppCompatActivity implements com.fourmob.datet
         tomato = getIntent().getParcelableExtra(MainActivity.PAR_KEY);
 
         tomato_rangebar = (RangeBar) findViewById(R.id.tomatotask_edit_rangebar);
-        tomato_rangebar.setOnRangeBarChangeListener(new RangeBar.OnRangeBarChangeListener() {
-            @Override
-            public void onRangeChangeListener(RangeBar rangeBar, int leftPinIndex,int rightPinIndex,String leftPinValue, String rightPinValue) {
-                tomato_index.setText(String.valueOf(rightPinIndex + 1));
-                tomato.setTomato(rightPinIndex + 1);
-                ifEdit = true;
-            }
-        });
 
         cancelWarning = NiftyDialogBuilder.getInstance(this);
 
@@ -242,10 +234,20 @@ public class EditActivity extends AppCompatActivity implements com.fourmob.datet
                 tomato_lev_radio.setChecked(true);
                 break;
         }
-        if(tomato.getTomato()>0)
+        if(tomato.getTomato()>0){
             tomato_rangebar.setRangePinsByIndices(0, tomato.getTomato() - 1);
+            tomato_rangebar.setOnRangeBarChangeListener(new RangeBar.OnRangeBarChangeListener() {
+                @Override
+                public void onRangeChangeListener(RangeBar rangeBar, int leftPinIndex, int rightPinIndex, String leftPinValue, String rightPinValue) {
+                    tomato_index.setText(String.valueOf(rightPinIndex + 1));
+                    tomato.setTomato(rightPinIndex + 1);
+                    ifEdit = true;
+                }
+            });
+        }
         else
             tomato_rangebar.setRangePinsByIndices(0, 0);
+
         tomato_index.setText(String.valueOf(tomato.getTomato()));
         tomato_ifRemind.setChecked(tomato.IfRemind());
 
@@ -278,15 +280,15 @@ public class EditActivity extends AppCompatActivity implements com.fourmob.datet
     @Override
     public void onBackPressed(){
         if(ifEdit) {
-            cancelWarning.withTitle("Uploading")
-                    .withMessage(" Save your changes ? ")             //.withMessage(null)  no Msg
+            cancelWarning.withTitle(getResources().getString(R.string.message_title_upload))
+                    .withMessage(" "+getResources().getString(R.string.message_content_upload))             //.withMessage(null)  no Msg
                     .withDialogColor(getResources().getColor(R.color.themeLight))
                     .withDialogColor(getResources().getColor(R.color.theme))
                     .withIcon(getResources().getDrawable(R.drawable.ic_action_info))
                     .withDuration(600)                                          //def
                     .withEffect(Effectstype.RotateBottom)                               //def Effectstype.Slidetop
-                    .withButton1Text("Yes")                                      //def gone
-                    .withButton2Text("No")                                  //def gone
+                    .withButton1Text(getResources().getString(R.string.message_yes))                                      //def gone
+                    .withButton2Text(getResources().getString(R.string.message_no))                                  //def gone
                     .isCancelableOnTouchOutside(true).show();
         }
         else{

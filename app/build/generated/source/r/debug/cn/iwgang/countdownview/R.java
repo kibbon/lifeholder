@@ -54,9 +54,9 @@ public final class R {
 		public static final int top = 0x7f0c002e;
 	}
 	public static final class string {
-		public static final int action_settings = 0x7f060048;
-		public static final int app_name = 0x7f06004a;
-		public static final int hello_world = 0x7f060056;
+		public static final int action_settings = 0x7f060052;
+		public static final int app_name = 0x7f060054;
+		public static final int hello_world = 0x7f060060;
 	}
 	public static final class styleable {
 		public static final int[] CountdownView = { 0x7f01005b, 0x7f01005c, 0x7f01005d, 0x7f01005e, 0x7f01005f, 0x7f010060, 0x7f010061, 0x7f010062, 0x7f010063, 0x7f010064, 0x7f010065, 0x7f010066, 0x7f010067, 0x7f010068, 0x7f010069, 0x7f01006a, 0x7f01006b, 0x7f01006c, 0x7f01006d, 0x7f01006e, 0x7f01006f, 0x7f010070, 0x7f010071, 0x7f010072, 0x7f010073, 0x7f010074, 0x7f010075, 0x7f010076, 0x7f010077, 0x7f010078, 0x7f010079, 0x7f01007a, 0x7f01007b, 0x7f01007c, 0x7f01007d };

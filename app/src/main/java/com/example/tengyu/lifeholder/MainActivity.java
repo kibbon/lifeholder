@@ -37,15 +37,17 @@ public class MainActivity extends AppCompatActivity {
      * See https://g.co/AppIndexing/AndroidStudio for more information.
      */
     public final static String PAR_KEY = "com.andy.par";
-
     private boolean ifIflate;
+    private boolean ifCount;
+    private String countTitle;
     private int selectPosition;
-    private String titles;
     private GoogleApiClient client;
     private tomatoIO tomatoMod;
     private SwipeMenuListView listView;
     private ScaleInAnimationAdapter animationAdapter;
     private NiftyDialogBuilder deleteWarning;
+    private com.melnykov.fab.FloatingActionButton fab;
+    private com.melnykov.fab.FloatingActionButton count_fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,21 +57,39 @@ public class MainActivity extends AppCompatActivity {
         tomatoMod = new tomatoIO(getSharedPreferences("tomato_data",MODE_PRIVATE));
         tomatoMod.flush();
 
+        ifCount = false;
+        ifIflate = true;
+        countTitle = "";
+
         listView = (SwipeMenuListView) findViewById(R.id.tomatotask_list_view);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position,
                                     long id) {
                 view.setSelected(true);
-                if(tomatoMod.get(position).repOK()){
-                    Intent intent = new Intent("com.example.tengyu.lifeholder.ACTION_COUNT");
-                    intent.putExtra("TITLE", tomatoMod.get(position).getTitle());
-                    startActivityForResult(intent, position + 1);
+                if(!ifCount){
+                    if(tomatoMod.get(position).repOK()){
+                        Intent intent = new Intent("com.example.tengyu.lifeholder.ACTION_COUNT");
+                        countTitle =tomatoMod.get(position).getTitle();
+                        intent.putExtra("TITLE",countTitle);
+                        if(tomatoMod.get(position).IfRemind()){
+                            intent.putExtra("REMIND", "TRUE");
+                        }
+                        else
+                            intent.putExtra("REMIND", "FALSE");
+                        //tomatoMod.start();
+                        ifCount = true;
+                        startActivity(intent);
+                    }
+                }
+                else{
+                    if(tomatoMod.get(position).getTitle().equals(countTitle)){
+                        Intent intent = new Intent("com.example.tengyu.lifeholder.ACTION_COUNT");
+                        startActivity(intent);
+                    }
                 }
             }
         });
-        ifIflate = true;
 
         deleteWarning = NiftyDialogBuilder.getInstance(this);
         deleteWarning.setButton1Click(new View.OnClickListener() {
@@ -81,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Task deleted!", Toast.LENGTH_SHORT).show();
             }
         });
+
         deleteWarning.setButton2Click(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -131,19 +152,19 @@ public class MainActivity extends AppCompatActivity {
                         tomatoTask tomatoTp = tomatoMod.get(position);
                         bundle.putParcelable(PAR_KEY, tomatoTp);
                         intent.putExtras(bundle);
-                        startActivityForResult(intent,position+1);
+                        startActivityForResult(intent, position + 1);
                         break;
                     case 1:
-                        deleteWarning.withTitle("Warning")
-                                .withMessage(" Confirm to remove ? ")             //.withMessage(null)  no Msg
+                        deleteWarning.withTitle(getResources().getString(R.string.message_title_warning))
+                                .withMessage(" " + getResources().getString(R.string.message_content_remove))             //.withMessage(null)  no Msg
                                 .withDialogColor(getResources().getColor(R.color.themeLight))
                                 .withDialogColor(getResources().getColor(R.color.theme))
                                 .withIcon(getResources().getDrawable(R.drawable.ic_action_warning))
                                 .withDuration(500)                                          //def
                                 .withEffect(Effectstype.RotateBottom)                               //def Effectstype.Slidetop
-                                .withButton1Text("OK")                                      //def gone
-                                .withButton2Text("Cancel")                                  //def gone
-                                .isCancelableOnTouchOutside(true)   .show();
+                                .withButton1Text(getResources().getString(R.string.message_ok))                                      //def gone
+                                .withButton2Text(getResources().getString(R.string.message_cancel))                                  //def gone
+                                .isCancelableOnTouchOutside(true).show();
                         selectPosition = position;
                         break;
                     default:
@@ -154,8 +175,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        com.melnykov.fab.FloatingActionButton fab = (com.melnykov.fab.FloatingActionButton) findViewById(R.id.fab);
-        fab.attachToListView(listView);
+        fab = (com.melnykov.fab.FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -165,23 +185,34 @@ public class MainActivity extends AppCompatActivity {
                 tomatoTask tomatoTp = new tomatoTask();
                 bundle.putParcelable(PAR_KEY, tomatoTp);
                 intent.putExtras(bundle);
-                startActivityForResult(intent,0);
+                startActivityForResult(intent, 0);
             }
         });
+        count_fab = (com.melnykov.fab.FloatingActionButton) findViewById(R.id.count_fab);
+        count_fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(ifCount){
+                    Intent intent = new Intent("com.example.tengyu.lifeholder.ACTION_COUNT");
+                    startActivity(intent);
+                }
+            }
+        });
+
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
 
-        if(savedInstanceState != null){
-            titles  = savedInstanceState.getString("TITLE");
-            if(titles!=null){
-                Intent intent = new Intent("com.example.tengyu.lifeholder.ACTION_COUNT");
-                intent.putExtra("TITLE",String.valueOf(titles));
-                startActivity(intent);
-            }
-        }
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+
     }
 
+    @Override
+    protected void onNewIntent(Intent intent) {
+
+        super.onNewIntent(intent);
+
+        setIntent(intent);//must store the new intent unless getIntent() will return the old one
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -198,9 +229,9 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+        //if (id == R.id.action_settings) {
+          //  return true;
+        //}
 
         return super.onOptionsItemSelected(item);
     }
@@ -208,8 +239,33 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
+
+        String request;
+        if((request = getIntent().getStringExtra("RESULT"))!=null){
+            if(!request.equals("")){
+                tomatoMod.tomato(request);
+                tomatoMod.save();
+                ifIflate = true;
+                Toast.makeText(this, "Task finished!", Toast.LENGTH_SHORT).show();
+            }
+            getIntent().removeExtra("RESULT");
+            ifCount = false;
+        }
+
         if(ifIflate)
             flush();
+
+        if(ifCount){
+            fab.setVisibility(View.GONE);
+            count_fab.setVisibility(View.VISIBLE);
+            count_fab.attachToListView(listView);
+        }
+        else{
+            count_fab.setVisibility(View.GONE);
+            fab.setVisibility(View.VISIBLE);
+            fab.attachToListView(listView);
+        }
+
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client.connect();
@@ -254,6 +310,7 @@ public class MainActivity extends AppCompatActivity {
         ifIflate = false;
     }
 
+
     @Override
     protected  void onActivityResult(int requestCode, int resultCode, Intent data){
         switch (requestCode){
@@ -273,20 +330,8 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(this,"Task list updated!",Toast.LENGTH_SHORT).show();
                     ifIflate = true;
                 }
-                else if(resultCode == RESULT_FIRST_USER) {
-                    Toast.makeText(this,"Task list updated!",Toast.LENGTH_SHORT).show();
-                    tomatoMod.tomato(requestCode - 1);
-                    ifIflate = true;
-                }
                 break;
         }
-    }
-
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState){
-        super.onSaveInstanceState(outState);
-        outState.putString("TITLE", titles);
     }
 
     private int dp2px(int dp) {

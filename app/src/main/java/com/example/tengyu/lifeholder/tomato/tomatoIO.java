@@ -22,14 +22,25 @@ public class tomatoIO {
         this.tomatoSave = tomatoSave;
         this.autoSave = false;
     }
+    /*
+    public void start(){
+        SharedPreferences.Editor editor  = tomatoSave.edit();
+        editor.putBoolean("TASK_COUNT", true);
+        editor.commit();
+    }
+
+    public boolean check(){
+        return tomatoSave.getBoolean("TASK_COUNT",false);
+    }*/
 
     public void flush(){
+        tomatoList.clear();
         int i;
         for(i = 0; i < tomatoSave.getInt("TASK_SIZE", 0);i++){
             tomatoTask tp = new tomatoTask(
                     tomatoSave.getString("title_"+String.valueOf(i),"Empty Task"),
                     tomatoSave.getString("tag_"+String.valueOf(i),"Undefined"),
-                    tomatoSave.getInt("tomato_"+String.valueOf(i),1),
+                    tomatoSave.getInt("tomato_"+String.valueOf(i),0),
                     tomatoSave.getInt("lev_"+String.valueOf(i),2),
                     tomatoSave.getBoolean("ifRemind_"+String.valueOf(i),false),
                     new Date(tomatoSave.getLong("time_"+String.valueOf(i),new Date().getTime())),
@@ -39,6 +50,33 @@ public class tomatoIO {
         }
         if(i==0)
             testTomatoes();
+    }
+
+    public void swap(int s,int t){
+        tomatoTask tp = tomatoList.get(s);
+        tomatoList.set(s,tomatoList.get(t));
+        tomatoList.set(t,tp);
+    }
+
+    public void sort(int s,int t){
+        int i,j;
+        if(s<t){
+            i = s;
+            j = t+1;
+            while(true){
+                do i++;
+                while(!(larger(tomatoList.get(s),tomatoList.get(i))||i==t));
+                do j--;
+                while(!(larger(tomatoList.get(j),tomatoList.get(s))||j==s));
+                if(i<j)
+                    swap(i,j);
+                else
+                    break;
+            }
+            swap(s,j);
+            sort(s, j - 1);
+            sort(j+1,t);
+        }
     }
 
     public void insert(tomatoTask tp){
@@ -61,18 +99,19 @@ public class tomatoIO {
         editor.putInt("tomato_"+String.valueOf(i),tp.getTomato());
         editor.putInt("lev_"+String.valueOf(i),tp.getLev());
         editor.putBoolean("ifRemind_"+String.valueOf(i),tp.IfRemind());
-        editor.putLong("time_"+String.valueOf(i),tp.getDate().getTime());
+        editor.putLong("time_" + String.valueOf(i), tp.getDate().getTime());
         editor.putLong("deadline_" + String.valueOf(i), tp.getDeadline().getTime());
         editor.commit();
     }
 
     public void save(){
         for(int i = 0; i < tomatoList.size(); i++){
-            commit(i,tomatoList.get(i));
+                commit(i, tomatoList.get(i));
         }
         SharedPreferences.Editor editor = tomatoSave.edit();
         editor.putInt("TASK_SIZE", tomatoList.size());
         editor.commit();
+        this.sort(0,tomatoList.size()-1);
     }
 
     public tomatoTask get(int position){
@@ -96,14 +135,22 @@ public class tomatoIO {
         return tomatoList;
     }
 
-    public boolean tomato(int position){
-        if(position<tomatoList.size()&&position>=0){
-            if(tomatoList.get(position).tomato()){
-                set(position,tomatoList.get(position));
-                return true;
+    public void tomato(String title){
+        int position = -1;
+        for(int i = 0;i<tomatoList.size();i++){
+            if(tomatoList.get(i).getTitle().equals(title)){
+                position = i;
+                break;
             }
         }
-        return false;
+        if(position<tomatoList.size()&&position>=0) {
+            if (tomatoList.get(position).tomato()) {
+                tomatoList.set(position, tomatoList.get(position));
+            }
+        }
+        //tomatoSave.edit().putBoolean("TASK_COUNT",false);
+        //tomatoSave.edit().commit();
+        //return false;
     }
 
     private boolean larger(tomatoTask t1, tomatoTask t2){
@@ -138,8 +185,9 @@ public class tomatoIO {
 
     public void testTomatoes(){
         tomatoList.clear();
-        tomatoTask tomato1 = new tomatoTask("软件工程前端开发",7,new Date(2015-1900,11,22),3,false);
+        tomatoTask tomato1 = new tomatoTask("点击右下角创建任务！",0,new Date(),1,false);
         insert(tomato1);
+        /*
         tomatoTask tomato2 = new tomatoTask("安卓界面原型设计",5,new Date(2015-1900,11,20),2,false);
         insert(tomato2);
         tomatoTask tomato3 = new tomatoTask("数据库用户级约束",4,new Date(2015-1900,11,23),1);
@@ -160,6 +208,7 @@ public class tomatoIO {
         insert(tomato10);
         tomatoTask tomato11 = new tomatoTask("名字要长长长长长长长长长长长长长", 6, new Date(2016-1900,3,2));
         insert(tomato11);
+        */
         Log.d("tomatoTaskInit", "Success");
     }
 }

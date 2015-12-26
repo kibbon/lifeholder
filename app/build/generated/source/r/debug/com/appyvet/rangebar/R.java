@@ -30,11 +30,11 @@ public final class R {
 		public static final int tickStart = 0x7f0100a4;
 	}
 	public static final class drawable {
-		public static final int rotate = 0x7f020071;
-		public static final int roundrect = 0x7f020072;
+		public static final int rotate = 0x7f020072;
+		public static final int roundrect = 0x7f020073;
 	}
 	public static final class string {
-		public static final int app_name = 0x7f06004a;
+		public static final int app_name = 0x7f060054;
 	}
 	public static final class style {
 		public static final int AppBaseTheme = 0x7f090005;

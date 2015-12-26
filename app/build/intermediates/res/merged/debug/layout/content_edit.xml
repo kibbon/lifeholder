@@ -31,7 +31,7 @@
                 android:background="@color/themeLight"
                 android:orientation="vertical">
                 <TextView
-                    android:text="GENERAL"
+                    android:text="@string/action_edit_general"
                     android:layout_gravity="center"
                     android:layout_marginTop="5dp"
                     android:textColor="@color/colorControlHolylight"
@@ -44,14 +44,14 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp">
                 <TextView
-                    android:text="Title: "
+                    android:text="@string/action_edit_general_title"
                     android:textSize="20sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"/>
                 <android.support.v7.widget.AppCompatEditText
                     android:id="@+id/tomatotask_edit_title"
-                    android:hint="  type description here"
+                    android:hint="@string/action_edit_general_titleHint"
                     android:maxLines="2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -62,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp">
                 <TextView
-                    android:text="Priority: "
+                    android:text="@string/action_edit_general_priority"
                     android:textSize="20sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -76,7 +76,7 @@
                         android:id="@+id/tomatotask_edit_lev1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="1"
+                        android:text="@string/action_edit_general_priority1"
                         android:layout_weight="1"
                         android:textSize="20sp"
                         android:textColor="@color/themeLight"/>
@@ -84,7 +84,7 @@
                         android:id="@+id/tomatotask_edit_lev2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="2"
+                        android:text="@string/action_edit_general_priority2"
                         android:layout_weight="1"
                         android:textSize="20sp"
                         android:textColor="@color/theme"/>
@@ -92,7 +92,7 @@
                         android:id="@+id/tomatotask_edit_lev3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="3"
+                        android:text="@string/action_edit_general_priority3"
                         android:layout_weight="1"
                         android:textSize="20sp"
                         android:textColor="@color/themeDark"/>
@@ -103,7 +103,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp">
                 <TextView
-                    android:text="Always remind me "
+                    android:text="@string/action_edit_general_remind"
                     android:textSize="20sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -145,7 +145,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_gravity="center">
             <TextView
-                android:text="TOMAT"
+                android:text="@string/action_edit_tomato1"
                 android:textColor="@color/themeHolyLight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -155,7 +155,7 @@
                 android:layout_height="32dp"
                 android:src="@drawable/ic_object_tomato_fulltheme"/>
             <TextView
-                android:text="ES: "
+                android:text="@string/action_edit_tomato2"
                 android:textColor="@color/themeHolyLight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -251,7 +251,7 @@
                         android:layout_gravity="center"
                         android:src="@drawable/ic_object_clock"/>
                     <TextView
-                        android:text="DEADLINE"
+                        android:text="@string/action_edit_deadline"
                         android:textColor="@color/themeHolyLight"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
